@@ -29,6 +29,8 @@ class Insight:
     accent: str = T.BLUE
     fig: Callable[[], go.Figure] | None = None
     table: pd.DataFrame | None = field(default=None, repr=False)
+    year: int | None = None      # None = structural / multi-year finding
+    so_what: str = ""
 
     @property
     def weight(self) -> float:
@@ -107,7 +109,8 @@ def build(ctx: dict) -> list[Insight]:
                 p_m, len(ok), f"{SRC_SEC} · {SRC_PX}", T.BLUE,
                 lambda: _scatter_fit(ok, "multiple_change_pp", "tsr_pct", "P/TBV re-rating (pp/yr)", "TSR (%/yr)",
                                      "Re-rating vs total shareholder return"),
-                ok[["name", "tsr_pct", "tbvps_growth_pp", "multiple_change_pp", "cash_yield_pp"]].round(1)))
+                ok[["name", "tsr_pct", "tbvps_growth_pp", "multiple_change_pp", "cash_yield_pp"]].round(1),
+                so_what="The market pays for believable earnings: loss-ratio stability and reserve credibility drive the multiple."))
 
     # 2. Valuation mean reversion
     ok = d.dropna(subset=["p_tbv_start", "multiple_change_pp"])
@@ -122,7 +125,8 @@ def build(ctx: dict) -> list[Insight]:
                 p, len(ok), f"{SRC_SEC} · {SRC_PX}", T.NAVY,
                 lambda: _scatter_fit(ok, "p_tbv_start", "multiple_change_pp", f"P/TBV at end-{y0} (x)",
                                      "Re-rating contribution (pp/yr)", "Starting valuation vs re-rating"),
-                ok[["name", "p_tbv_start", "p_tbv_end", "multiple_change_pp"]].round(2)))
+                ok[["name", "p_tbv_start", "p_tbv_end", "multiple_change_pp"]].round(2),
+                so_what="Valuation gaps close: discount carriers with a credible fix re-rate; premium multiples are a liability when growth slows."))
 
     # 3. Year-level fundamental shifts (generated for every year; only material + significant ones kept)
     piv = lambda col: fund.pivot(index="ticker", columns="fiscal_year", values=col)  # noqa: E731
@@ -170,6 +174,20 @@ def build(ctx: dict) -> list[Insight]:
                     ctxline = (f" TBV/share fell {g:.0f}% (bond marks) while prices held, so P/TBV rose mechanically"
                                " rather than from re-rating optimism.")
             accent = T.RED if (col == "loss_ratio_pct" and med > 0) or (col != "loss_ratio_pct" and med < 0) else T.BLUE
+            sw = {
+                "tbvps_growth_pct": ("Capital is building fast; in a softening market, excess capital is what fuels price-cutting."
+                                     if med > 0 else "Book value fell broadly: the market tests balance-sheet resilience, not just underwriting."),
+                "loss_ratio_pct": ("Pricing caught up with loss trend: margin is at its peak, so the job now is to protect it."
+                                   if med < 0 else "Loss costs outran price: expect reserve scrutiny and rate filings to follow."),
+                "rote_pct": ("Returns expanded: the window to bank capital and return it is open." if med > 0
+                             else "Returns compressed: capital discipline matters more than growth."),
+                "aoci_to_tbv_pct": ("Rate moves, not underwriting, drove book value: match duration and report ex-AOCI."
+                                    if med < 0 else "Bond marks are unwinding into earnings: a quiet tailwind not to spend on price cuts."),
+                "p_tbv": ("Investors are pricing the turn before it hits earnings." if med < 0
+                          else "The market paid up for the cycle: expectations are now the risk."),
+                "premium_growth_pct": ("Top-line growth is fading with rate: exposure growth has to carry the plan." if med < 0
+                                       else "Growth accelerated on rate: the hard market at full strength."),
+            }[col]
             out.append(Insight(
                 f"{col}-{yr}", theme, head, fmt, f"median · {share:.0%} of carriers moved this way",
                 f"Wilcoxon signed-rank across {len(s)} carriers{'' if kind == 'level' else f', {yr} vs {yr - 1}'}."
@@ -177,7 +195,7 @@ def build(ctx: dict) -> list[Insight]:
                 pv, len(s), SRC_SEC + (" · " + SRC_PX if col == "p_tbv" else ""), accent,
                 (lambda s=s, yr=yr, label=label, unit=unit: _bars(s.rename(index=lambda t: t), f"{label}, {yr}",
                                                                    "" if unit == "x" else unit.strip())),
-                s.rename(label).to_frame().round(2)))
+                s.rename(label).to_frame().round(2), year=yr, so_what=sw))
 
     # 4. Market beta decoupling
     if len(res) > 600:
@@ -194,7 +212,8 @@ def build(ctx: dict) -> list[Insight]:
                 "beta", "Market signal", "P&C stocks have decoupled from the broad market",
                 f"β {b_first:.2f} → {b_last:.2f}", "market beta, first vs latest year",
                 "Equal-weight basket regressed on S&P 500 daily returns; the interaction term tests the beta shift.",
-                p, len(res), SRC_PX, T.MAGENTA, _beta_fig))
+                p, len(res), SRC_PX, T.MAGENTA, _beta_fig,
+                so_what="Insurers now trade on their own drivers (pricing, cat, reserves, yields): outcomes are in management's hands."))
 
     # 5. Asymmetric sector-specific shocks
     if len(shocks) >= 8:
@@ -215,7 +234,28 @@ def build(ctx: dict) -> list[Insight]:
                 f"Market-model residuals (beta removed). Largest: {top.name:%b %d, %Y} "
                 f"({top['residual_pct']:+.1f}%{', ' + top['catalyst'] if isinstance(top['catalyst'], str) else ''}).",
                 p, len(shocks), SRC_PX, T.RED, _shock_fig,
-                shocks[["residual_pct", "z", "carriers_down_pct", "catalyst"]].round(2)))
+                shocks[["residual_pct", "z", "carriers_down_pct", "catalyst"]].round(2),
+                so_what="The market forgives catastrophes quickly and reserve surprises slowly: credibility is the asset."))
+
+    # 5b. One insight per year: that year's largest attributed, insurance-specific shock
+    if len(shocks):
+        att = shocks[shocks["catalyst"].notna()] if "catalyst" in shocks else shocks.iloc[0:0]
+        for yr, g in att.groupby(att.index.year):
+            r = g.iloc[0]
+            pz = float(2 * stats.norm.sf(abs(r["z"])))
+            out.append(Insight(
+                f"shock-{yr}", "Market shock", f"{yr}: {r['catalyst']}", f"{r['residual_pct']:+.1f}%",
+                f"insurance-specific move on {r.name:%b %d} (beta-adjusted, z {r['z']:+.1f})",
+                f"{r['why']}" + (f" ({r['confidence']})" if isinstance(r.get('confidence'), str) else ""),
+                pz, len(shocks), ("source: " + r["source_url"].split("/")[2].replace("www.", "")
+                                  if isinstance(r.get("source_url"), str) and r["source_url"].startswith("http") else "Event log"),
+                T.RED if r["z"] < 0 else T.BLUE, None, None, year=int(yr),
+                so_what={"Earnings / reserves": "Reserve surprises are the shocks that stick: pre-empt them with independent reviews.",
+                         "Catastrophe": "Cat sell-offs fade when losses land inside reinsurance: concentration is the real risk.",
+                         "Macro": "Macro shocks hit the group together: they're about yields and risk appetite, not underwriting.",
+                         "Earnings / growth": "Growth-priced specialists get punished hardest when growth merely slows.",
+                         "Pricing cycle": "The market sells the turn in pricing before it shows in earnings.",
+                         "Earnings / regulation": "Regulatory profit caps are an underwriting risk: price them like a peril."}.get(r.get("event_category"), "")))
 
     return out
 

@@ -11,29 +11,50 @@ from scipy import stats
 from universe import UNIVERSE
 
 NAME = {c["ticker"]: c["name"] for c in UNIVERSE}
-SEGMENT = {c["ticker"]: c["segment"] for c in UNIVERSE}
+SEGMENT = {c["ticker"]: c["segment"] for c in UNIVERSE if c["segment"]}
+SUB = {c["ticker"]: c["sub_industry"] for c in UNIVERSE}
+LENS = {c["ticker"]: c["lens"] for c in UNIVERSE}
+MARKET = {c["ticker"]: c["market"] for c in UNIVERSE}
 
-# Dated market events used only to *label* statistically detected breaks/shocks (never to find them).
-EVENTS = [
-    ("2020-11-09", "Vaccine efficacy news triggers value rotation"),
-    ("2021-08-29", "Hurricane Ida landfall"),
-    ("2022-03-16", "Fed begins rate-hiking cycle"),
-    ("2022-06-15", "Fed 75 bp hike after CPI surprise"),
-    ("2022-09-28", "Hurricane Ian landfall"),
-    ("2022-11-10", "Cooler CPI print sparks broad risk-on rally"),
-    ("2023-03-10", "Silicon Valley Bank failure"),
-    ("2024-09-18", "Fed begins cutting rates"),
-    ("2024-10-09", "Hurricane Milton landfall"),
-    ("2025-01-07", "Los Angeles wildfires begin"),
-    ("2025-01-27", "AI-driven tech sell-off rotates money to defensives"),
-    ("2025-04-02", "US tariff announcement sell-off"),
-]
-EVENTS = [(pd.Timestamp(d), label) for d, label in EVENTS]
+_EVENTS: pd.DataFrame | None = None
 
 
-def nearest_event(date: pd.Timestamp, window_days: int) -> str | None:
-    best = min(EVENTS, key=lambda e: abs((e[0] - date).days))
-    return best[1] if abs((best[0] - date).days) <= window_days else None
+def events() -> pd.DataFrame:
+    """Researched, sourced event log from the database (used only to label detected moves)."""
+    global _EVENTS
+    if _EVENTS is None:
+        try:
+            import db
+            e = db.table("events")
+            e["date"] = pd.to_datetime(e["date"])
+            _EVENTS = e
+        except Exception:  # noqa: BLE001
+            _EVENTS = pd.DataFrame(columns=["date", "label", "category", "detail", "source_url", "confidence", "tickers"])
+    return _EVENTS
+
+
+def nearest_event(date: pd.Timestamp, window_days: int, categories: tuple | None = None) -> str | None:
+    e = events()
+    if categories:
+        e = e[e["category"].isin(categories)]
+    if e.empty:
+        return None
+    gap = (e["date"] - date).abs().dt.days
+    i = gap.idxmin()
+    return e.loc[i, "label"] if gap[i] <= window_days else None
+
+
+def event_for(date: pd.Timestamp, window_days: int = 1) -> dict | None:
+    """Full event record (label, detail, source, confidence) for a detected shock day."""
+    e = events()
+    if e.empty:
+        return None
+    gap = (e["date"] - date).abs().dt.days
+    hits = e[gap <= window_days]
+    if hits.empty:
+        return None
+    hits = hits.assign(_g=gap[hits.index]).sort_values(["_g"])
+    return hits.iloc[0].drop(labels="_g").to_dict()
 
 
 # ---------------------------------------------------------------------------
@@ -271,7 +292,12 @@ def shock_days(res: pd.DataFrame, breadth: pd.Series, z_cut: float = 3.0, window
     }).dropna()
     d = d[d["z"].abs() >= z_cut].copy()
     d["direction"] = np.where(d["z"] > 0, "Sector-specific rally", "Sector-specific sell-off")
-    d["catalyst"] = [nearest_event(i, 3) for i in d.index]
+    recs = [event_for(i, 1) for i in d.index]
+    d["catalyst"] = [r["label"] if r else None for r in recs]
+    d["why"] = [r["detail"] if r else None for r in recs]
+    d["event_category"] = [r["category"] if r else None for r in recs]
+    d["source_url"] = [r["source_url"] if r else None for r in recs]
+    d["confidence"] = [r["confidence"] if r else None for r in recs]
     return d.sort_values("z", key=abs, ascending=False)
 
 

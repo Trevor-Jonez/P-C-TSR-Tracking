@@ -19,7 +19,7 @@ sys.path.insert(0, str(ROOT))
 from universe import UNIVERSE  # noqa: E402
 
 UA = os.environ.get("SEC_USER_AGENT", "PC-TSR-Tracker research@example.com")
-YEARS = range(2019, 2026)
+YEARS = range(2019, 2027)
 
 # Ordered fallbacks: the first tag with a value for a given year wins.
 TAGS = {
@@ -37,6 +37,8 @@ TAGS = {
     ],
     "py_development": ["LiabilityForUnpaidClaimsAndClaimsAdjustmentExpenseIncurredClaimsPriorYears"],
     "net_investment_income": ["NetInvestmentIncome"],
+    "revenue": ["Revenues", "RevenueFromContractWithCustomerExcludingAssessedTax", "RevenueFromContractWithCustomerIncludingAssessedTax"],
+    "operating_income": ["OperatingIncomeLoss", "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest"],
     "buybacks": ["PaymentsForRepurchaseOfCommonStock"],
     "dividends_paid": ["PaymentsOfDividendsCommonStock", "PaymentsOfDividends"],
 }

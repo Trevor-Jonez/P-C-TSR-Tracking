@@ -80,7 +80,8 @@ def build(ctx: dict) -> tuple[list[Insight], dict]:
                 f"{'first negative reading since ' + since if s.iloc[-1] < 0 else 'still positive'}.",
                 last_b["p_value"], len(s), "CIAB survey via " + SRC_DECK, T.RED,
                 lambda s=s, br=br: regimes_fig(s, br, "Average commercial rate change, all lines (%)", "%", T.NAVY),
-                s.rename("rate change %").to_frame().tail(12)))
+                s.rename("rate change %").to_frame().tail(12), year=int(str(last_b["date"])[:4]),
+                so_what="The hard market's tailwind is gone: margins now depend on selection, terms and expense, not rate."))
 
     # 2. Catastrophe loss step change
     cat = series("insured_cat_losses_real")
@@ -101,7 +102,8 @@ def build(ctx: dict) -> tuple[list[Insight], dict]:
                 p, len(s), "Verisk PCS / Munich Re / Aon via " + SRC_DECK, T.MAGENTA,
                 lambda s=s, br=br: regimes_fig(s, br, "US insured catastrophe losses, inflation-adjusted ($B)", "B", T.MAGENTA,
                                                zero=False),
-                s.rename("$B").to_frame().tail(12)))
+                s.rename("$B").to_frame().tail(12), year=int(b["date"]),
+                so_what="Budget cat at the new run-rate and price secondary perils explicitly: the old 1-in-10 is now most years."))
 
     # 3. Premiums vs the economy (deck premiums vs live FRED GDP)
     dwp = series("industry_dwp_growth_yoy", "quarter")
@@ -125,7 +127,8 @@ def build(ctx: dict) -> tuple[list[Insight], dict]:
                 f"r = {r:.2f}", f"quarterly y/y, {j.index[0]}–{j.index[-1]}",
                 "Deck premium series correlated with live BEA nominal GDP from FRED: exposure growth, not just rate, "
                 "drives the top line, so a slowing economy feeds directly into premium growth.",
-                p, len(j), "S&P/ISO via deck · FRED GDP", T.BLUE, _fig, j.round(2).tail(12)))
+                p, len(j), "S&P/ISO via deck · FRED GDP", T.BLUE, _fig, j.round(2).tail(12),
+                so_what="As rate fades, exposure growth (the economy) carries the top line: find exposure, don't just raise price."))
 
     # 4. Combined ratio: where 2025 sits in history (empirical rank, no regime claim)
     cr = series("industry_combined_ratio")
@@ -147,7 +150,8 @@ def build(ctx: dict) -> tuple[list[Insight], dict]:
                 p, len(s), "A.M. Best / Verisk / S&P via " + SRC_DECK, T.BLUE,
                 lambda s=s, fc=fc: regimes_fig(s, [], "Industry combined ratio (%) with deck forecast", "", T.NAVY,
                                                forecast=fc, zero=False),
-                s.rename("combined ratio").to_frame().tail(10)))
+                s.rename("combined ratio").to_frame().tail(10), year=int(last),
+                so_what="Peak-cycle earnings: bank the capital and plan for a mid-to-high-90s combined ratio, not a 93."))
 
     # 5. Reconciliation quality (always shown in Data tab; deck card only as context)
     rec = db.table("reconciliation")

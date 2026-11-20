@@ -10,9 +10,9 @@ import yfinance as yf
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from universe import BENCHMARKS, UNIVERSE  # noqa: E402
+from universe import BENCHMARKS, INTERNATIONAL, UNIVERSE  # noqa: E402
 
-TICKERS = [c["ticker"] for c in UNIVERSE] + list(BENCHMARKS.values())
+TICKERS = [c["ticker"] for c in UNIVERSE] + list(INTERNATIONAL.values()) + list(BENCHMARKS.values())
 
 
 def main() -> None:

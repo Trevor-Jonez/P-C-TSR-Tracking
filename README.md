@@ -1,5 +1,8 @@
 # US P&C Value Signals
 
+> An executive read on where US property & casualty is heading and why: five data-backed themes, a "so what" with
+> CFO / CUO / CEO guidance under every chart, statistically tested inflection points, and a Cyber & AI tracker.
+
 A Streamlit dashboard that tracks value creation across 18 US property & casualty insurers and
 surfaces statistically tested market signals. All data lives in one provenance-tracked SQLite
 database, [`data/pc_market.db`](data/pc_market.db):
@@ -11,6 +14,9 @@ database, [`data/pc_market.db`](data/pc_market.db):
 | **SEC EDGAR XBRL** (10-K filings) | Carrier equity, goodwill, intangibles, AOCI, net income, premiums, losses, shares | Cross-checked against industry premium growth and combined-ratio direction (balanced panel) |
 | **Yahoo Finance** | Daily prices and dividend-adjusted total returns | Live on load; snapshot stored in the database |
 
+Plus a researched **event log** (shock-day causes, catastrophes, macro, cyber and AI-coverage milestones) and **market-context
+facts** (E&S, MGA, reinsurance, broker, cyber), each with a source link and confidence level, in `data/context/`.
+
 Key tables: `sources`, `chart_series_raw`, `observations` (all vintages), view `industry_latest`,
 `revisions`, `reconciliation`, `fred_observations`, `carrier_fundamentals_raw`, `prices`.
 
@@ -20,8 +26,11 @@ Key tables: `sources`, `chart_series_raw`, `observations` (all vintages), view `
 
 | Section | What it shows |
 |---|---|
-| **Insight deck** | Three cards drawn from every finding that passes a significance test (p < 0.10). Each states the statistic, test, sample size and source, and expands to its evidence chart and data. **Shuffle** deals a new set weighted by statistical strength. |
+| **Insight deck** | Cards drawn from every finding that passes a significance test (p < 0.10), each with a one-line "so what". Filter by **year** (2021 → latest) or **Shuffle**; expand any card for its evidence chart and data. |
+| **Executive story** | Five themes laddered from the data, the front-page narrative, investments and behaviours to reinforce |
 | Industry | Commercial pricing regimes (tested breaks), combined ratio with forecast, cat-loss step change, premiums vs GDP, deck figures against our SEC data and FRED |
+| Sub-industries | Carriers vs reinsurers vs retail brokers vs wholesale & MGA vs insurtech; admitted vs E&S; lens-level returns, valuation and growth |
+| Cyber & AI | US cyber premium & loss ratio (NAIC), pricing (Marsh), claims (Coalition), AI coverage vs exclusion timeline, specialist M&A |
 | Market signals | Cumulative excess return vs the S&P 500 with beta-adjusted shock days, change-point test, rolling beta, segment total returns, shock-day log |
 | Value drivers | TSR split into TBV/share growth, P/TBV re-rating and cash yield; which driver explains the ranking; outliers and leave-one-out influence |
 | Fundamentals | Year-by-year distributions (TBV growth, AOCI, RoTE, P/TBV) with significance stars; loss-ratio heatmap |

@@ -1,0 +1,59 @@
+domain,metric,period,value,unit,source_name,source_url,note
+Cyber,US cyber direct written premium (incl. alien surplus lines),2020,4.1,$B,NAIC 2021 cyber report,https://content.naic.org/sites/default/files/committee_related_documents/cmte-c-report-cybersecurity-insurance-market-211020.pdf,
+Cyber,US cyber direct written premium (incl. alien surplus lines),2022,9.7,$B,NAIC 2023 cyber report,https://content.naic.org/sites/default/files/inline-files/Final%202023%20Cyber%20Report.pdf,
+Cyber,US cyber direct written premium (incl. alien surplus lines),2023,9.84,$B,NAIC 2025 cyber report,https://content.naic.org/sites/default/files/inline-files/2025_Cybersecurity_Insurance%20Report.pdf,
+Cyber,US cyber direct written premium (incl. alien surplus lines),2024,9.14,$B,NAIC 2025 cyber report,https://content.naic.org/sites/default/files/inline-files/2025_Cybersecurity_Insurance%20Report.pdf,first annual decline on record (-7.1%)
+Cyber,US cyber direct written premium (incl. alien surplus lines),2025,9.46,$B,NAIC 2026 cyber report,https://content.naic.org/sites/default/files/2026-report-cybersecurity-insurance-market.pdf,+3.5%
+Cyber,US cyber DWP - US-domiciled insurers,2020,2.75,$B,NAIC 2021 cyber report,https://content.naic.org/sites/default/files/committee_related_documents/cmte-c-report-cybersecurity-insurance-market-211020.pdf,
+Cyber,US cyber DWP - US-domiciled insurers,2021,4.8,$B,NAIC 2022 cyber report,https://content.naic.org/sites/default/files/cmte-c-cyber-supplement-report-2022-for-data-year-2021.pdf,
+Cyber,US cyber DWP - US-domiciled insurers,2022,7.2,$B,NAIC 2023 cyber report,https://content.naic.org/sites/default/files/inline-files/Final%202023%20Cyber%20Report.pdf,
+Cyber,US cyber DWP - US-domiciled insurers,2023,7.18,$B,Aon US Cyber Market Update (NAIC data),https://www.aon.com/getmedia/4afa8654-6534-48c3-91c1-b27d57170cdb/20240806-US-Cyber-Market-Update.pdf,
+Cyber,US cyber DWP - US-domiciled insurers,2024,7.08,$B,NAIC 2026 cyber report,https://content.naic.org/sites/default/files/2026-report-cybersecurity-insurance-market.pdf,
+Cyber,US cyber DWP - US-domiciled insurers,2025,7.46,$B,NAIC 2026 cyber report,https://content.naic.org/sites/default/files/2026-report-cybersecurity-insurance-market.pdf,
+Cyber,US cyber industry loss ratio,2021,66.4,%,NAIC 2023 report (top-20 groups average),https://content.naic.org/sites/default/files/inline-files/Final%202023%20Cyber%20Report.pdf,top-20 average
+Cyber,US cyber industry loss ratio,2022,45,%,Aon US Cyber Market Update (NAIC data),https://assets.aon.com/-/media/files/aon/insights/2026/us-cyber-market-update.pdf,
+Cyber,US cyber industry loss ratio,2023,42,%,Aon US Cyber Market Update (NAIC data),https://assets.aon.com/-/media/files/aon/insights/2026/us-cyber-market-update.pdf,lowest since 2018
+Cyber,US cyber industry loss ratio,2024,48.7,%,NAIC 2026 cyber report,https://content.naic.org/sites/default/files/2026-report-cybersecurity-insurance-market.pdf,
+Cyber,US cyber industry loss ratio,2025,53,%,NAIC 2026 cyber report,https://content.naic.org/sites/default/files/2026-report-cybersecurity-insurance-market.pdf,primary cyber 57%; excess 52%
+Cyber,US cyber policies in force,2025,5.84,millions,NAIC 2026 cyber report,https://content.naic.org/sites/default/files/2026-report-cybersecurity-insurance-market.pdf,+33% y/y
+Cyber,Share of cyber policies that are endorsements,2025,63,% of policies,NAIC 2026 cyber report,https://content.naic.org/sites/default/files/2026-report-cybersecurity-insurance-market.pdf,but ~4% of premium
+Cyber,Share of cyber premium from endorsements,2025,4,% of premium,NAIC 2026 cyber report,https://content.naic.org/sites/default/files/2026-report-cybersecurity-insurance-market.pdf,
+Cyber,US cyber claims reported,2025,56323,claims,NAIC 2026 cyber report,https://content.naic.org/sites/default/files/2026-report-cybersecurity-insurance-market.pdf,+20% y/y
+Cyber,Global cyber premium,2024,15.3,$B,Munich Re Cyber Risks & Trends 2025,https://www.munichre.com/en/insights/cyber/cyber-insurance-risks-and-trends-2025.html,North America $10.6B (69%)
+Cyber,Global cyber premium (forecast),2025,16.3,$B,Munich Re Cyber Risks & Trends 2025,https://www.munichre.com/en/insights/cyber/cyber-insurance-risks-and-trends-2025.html,expected to more than double by 2030
+Cyber,US cyber rate change (Marsh GIMI),2021-Q1,35,%,Marsh GIMI Q2 2021,https://www.marsh.com/en/services/international-placement-services/insights/global-insurance-market-index-q2-2021.html,
+Cyber,US cyber rate change (Marsh GIMI),2021-Q2,56,%,Marsh GIMI Q2 2021,https://www.marsh.com/en/services/international-placement-services/insights/global-insurance-market-index-q2-2021.html,
+Cyber,US cyber rate change (Marsh GIMI),2021-Q4,130,%,Marsh GIMI Q1 2022,https://www.marsh.com/content/marsh2/en_us/about/media/global-insurance-market-index-q1-2022.html,peak
+Cyber,US cyber rate change (Marsh GIMI),2022-Q1,110,%,Marsh GIMI Q1 2022,https://www.marsh.com/content/marsh2/en_us/about/media/global-insurance-market-index-q1-2022.html,
+Cyber,US cyber rate change (Marsh GIMI),2022-Q2,79,%,Marsh GIMI Q3 2022,https://www.marsh.com/en/about/media/global-commercial-insurance-rates-continue-moderate-trend-q3-2022.html,
+Cyber,US cyber rate change (Marsh GIMI),2022-Q3,48,%,Marsh GIMI Q3 2022,https://www.marsh.com/en/about/media/global-commercial-insurance-rates-continue-moderate-trend-q3-2022.html,
+Cyber,US cyber rate change (Marsh GIMI),2025-Q4,-3,%,Marsh US Insurance Rates Q1 2026,https://www.marsh.com/en/services/international-placement-services/insights/us-insurance-rates/us-insurance-rates-q1-2026.html,declining since Q2 2023
+Cyber,US cyber rate change (Marsh GIMI),2026-Q1,-2,%,Marsh US Insurance Rates Q1 2026,https://www.marsh.com/en/services/international-placement-services/insights/us-insurance-rates/us-insurance-rates-q1-2026.html,
+Cyber,US cyber rate change (Marsh GIMI),2026-Q2,-2,%,Marsh US Insurance Rates Q2 2026,https://www.marsh.com/en/services/international-placement-services/insights/us-insurance-rates/us-insurance-rates-q2-2026.html,
+Cyber,Global cyber rate change (Marsh GIMI),2025-Q4,-7,%,Insurance Business (Marsh GIMI),https://www.insurancebusinessmag.com/us/news/breaking-news/dimon-says-ai-cyber-risk-is-up-tenfold--cyber-insurance-prices-are-still-falling-592533.aspx,
+Cyber,Global cyber rate change (Marsh GIMI),2026-Q1,-5,%,Marsh GIMI Q2 2026,https://www.marsh.com/en/corp/about/news/global-commercial-insurance-falls-6-percent-q2-2026.html,
+Cyber,Global cyber rate change (Marsh GIMI),2026-Q2,-4,%,Marsh GIMI Q2 2026,https://www.marsh.com/en/corp/about/news/global-commercial-insurance-falls-6-percent-q2-2026.html,12th consecutive quarterly decline
+Cyber,Claims frequency change (Coalition),2025,3,% y/y,Coalition 2026 Cyber Claims Report,https://www.coalitioninc.com/announcements/2026-cyber-claims-report,
+Cyber,Claims severity change (Coalition),2025,-19,% y/y,Coalition 2026 Cyber Claims Report,https://www.coalitioninc.com/announcements/2026-cyber-claims-report,average loss $116k
+Cyber,Initial ransom demand change (Coalition),2025,47,% y/y,Coalition 2026 Cyber Claims Report,https://www.coalitioninc.com/announcements/2026-cyber-claims-report,
+Cyber,Share of businesses refusing to pay ransom (Coalition),2025,86,%,Coalition 2026 Cyber Claims Report,https://www.coalitioninc.com/announcements/2026-cyber-claims-report,record
+Cyber,BEC claims frequency change (Coalition),2025,15,% y/y,Coalition 2026 Cyber Claims Report,https://www.coalitioninc.com/announcements/2026-cyber-claims-report,severity -28% to $27k
+Cyber,Funds transfer fraud frequency change (Coalition),2025,-18,% y/y,Coalition 2026 Cyber Claims Report,https://www.coalitioninc.com/announcements/2026-cyber-claims-report,severity -14% to $141k
+Cyber,CrowdStrike outage insured loss (upper estimate),2024,1.5,$B,Insurance Journal (CyberCube),https://www.insurancejournal.com/news/national/2024/07/25/785484.htm,range $0.4-1.5B
+E&S,US surplus lines direct premium written,2024,129.8,$B,AM Best via Insurance Business,https://www.insurancebusinessmag.com/us/news/excess-surplus/surplus-lines-hit-143bn-record-as-placement-market-shifts-589475.aspx,
+E&S,US surplus lines direct premium written,2025,143.3,$B,AM Best via Insurance Business,https://www.insurancebusinessmag.com/us/news/excess-surplus/surplus-lines-hit-143bn-record-as-placement-market-shifts-589475.aspx,+10.4%; domestic SL +8.9% ends 7-yr double-digit streak
+E&S,Surplus lines share of total P&C DPW,2000,3.6,%,AM Best annual report highlights (WSIA),https://www.wsia.org/wcm/wcm/Foundation/Summary.aspx,
+E&S,Surplus lines share of total P&C DPW,2025,12.9,%,AM Best annual report highlights (WSIA),https://www.wsia.org/wcm/wcm/Foundation/Summary.aspx,
+E&S,Surplus lines share of commercial lines DPW,2000,7.1,%,AM Best annual report highlights (WSIA),https://www.wsia.org/wcm/wcm/Foundation/Summary.aspx,
+E&S,Surplus lines share of commercial lines DPW,2025,27.5,%,AM Best annual report highlights (WSIA),https://www.wsia.org/wcm/wcm/Foundation/Summary.aspx,
+MGA,US MGA direct premium written (statutory),2024,91.8,$B,Conning MGA study 2025,https://www.conning.com/about-us/news/ir-pr---mga-2025,Conning all-in estimate $114.1B
+MGA,US MGA direct premium written (statutory),2025,102.6,$B,Conning MGA study 2026 (Reinsurance News),https://www.reinsurancene.ws/conning-estimates-us-mga-premiums-reached-128bn-in-2025/,+12%; all-in estimate ~$128B; ~20% via fronting
+MGA,Delegated authority DPW (AM Best),2025,108.7,$B,Risk & Insurance (AM Best),https://riskandinsurance.com/mga-premiums-hit-108-7-billion-in-2025-as-capacity-scrutiny-tightens/,+17.8% from $92.3B
+Reinsurance,Global property cat rate-on-line change (Jan 1),2026,-12,%,Guy Carpenter via Artemis,https://www.artemis.bm/news/property-catastrophe-rates-fall-12-globally-in-the-us-and-apac-15-in-europe-guy-carpenter/,US -12%; Europe -15%
+Reinsurance,Global property cat rate-on-line change (YTD after July),2026,-16,%,Guy Carpenter via Artemis,https://www.artemis.bm/news/global-and-us-property-cat-rates-down-16-apac-19-after-july-renewals-in-2026-guy-carpenter/,
+Brokers,Organic growth - Marsh McLennan,2026-Q3,5,%,Beinsure broker roundup,https://beinsure.com/news/global-insurance-brokers-generate-122bn/,
+Brokers,Organic growth - Aon,2026-Q3,6,%,Beinsure broker roundup,https://beinsure.com/news/global-insurance-brokers-generate-122bn/,
+Brokers,Organic growth - Gallagher (brokerage + risk mgmt),2026-Q3,5,%,Beinsure broker roundup,https://beinsure.com/news/global-insurance-brokers-generate-122bn/,another source cites 2.8% company-wide
+Brokers,Organic growth - Brown & Brown,2026-Q3,1.2,%,Beinsure broker roundup,https://beinsure.com/news/global-insurance-brokers-generate-122bn/,Q2 2026: -0.7%
+Pricing,Global commercial rate change (Marsh GIMI),2026-Q2,-6,%,Marsh GIMI Q2 2026,https://www.marsh.com/en/corp/about/news/global-commercial-insurance-falls-6-percent-q2-2026.html,
+Pricing,Global commercial rate change (Marsh GIMI),2026-Q3,-5,%,Beinsure (Marsh GIMI),https://beinsure.com/news/global-insurance-brokers-generate-122bn/,ninth consecutive decline

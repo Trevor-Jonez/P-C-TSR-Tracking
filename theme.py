@@ -115,6 +115,36 @@ p, li {{ color: {INK}; }}
 .stButton>button p {{ color: {WHITE}; }}
 [data-testid="stExpander"] summary p {{ font-size: .85rem; color: {NAVY}; font-weight: 500; }}
 [data-testid="stSidebar"] {{ background: {LIGHT}; }}
+
+/* "So what" block: compact, executive, sits under every chart */
+.sw {{ border-left: 3px solid var(--accent, {BLUE}); background: #F7F9FD; padding: .55rem .8rem .6rem; margin: .1rem 0 .2rem; border-radius: 2px; }}
+.sw .tag {{ font-family: {MONO}; font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent, {BLUE}); }}
+.sw .hd {{ font-weight: 600; color: {NAVY}; font-size: .95rem; line-height: 1.3; margin: .1rem 0 .2rem; }}
+.sw .bd {{ font-size: .86rem; color: {INK}; line-height: 1.45; }}
+.sw .bd b {{ color: {NAVY}; }}
+.roles {{ display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; margin-top: .2rem; }}
+@media (max-width: 900px) {{ .roles {{ grid-template-columns: 1fr; }} }}
+.role {{ background: {WHITE}; border: 1px solid {MID}; border-top: 3px solid {NAVY}; padding: .5rem .65rem; border-radius: 2px; }}
+.role .who {{ font-family: {MONO}; font-size: .7rem; letter-spacing: .08em; color: {SLATE}; text-transform: uppercase; }}
+.role .why {{ font-size: .84rem; color: {INK}; margin: .2rem 0 .3rem; line-height: 1.4; }}
+.role .do {{ font-size: .82rem; color: {NAVY}; line-height: 1.4; }}
+.role .do:before {{ content: "→ "; color: {BLUE}; font-weight: 600; }}
+.watch {{ font-size: .8rem; color: {SLATE}; margin-top: .35rem; }}
+.watch b {{ color: {NAVY}; font-weight: 600; }}
+/* Freshness stamp: deliberately quiet */
+.fresh {{ font-family: {MONO}; font-size: .66rem; color: #8A97B2; text-align: right; margin: -.35rem 0 .3rem; letter-spacing: .02em; }}
+.fresh:before {{ content: "● "; color: #9FD9B0; font-size: .6rem; }}
+.fresh.stale:before {{ color: #F2B8C6; }}
+.theme-row {{ display: grid; grid-template-columns: repeat(5, 1fr); gap: .6rem; }}
+@media (max-width: 1100px) {{ .theme-row {{ grid-template-columns: repeat(2, 1fr); }} }}
+.tcard {{ border-top: 4px solid var(--accent, {BLUE}); background: {LIGHT}; padding: .7rem .8rem; border-radius: 2px; height: 100%; }}
+.tcard .n {{ font-family: {MONO}; font-size: .7rem; color: {SLATE}; }}
+.tcard .t {{ font-weight: 650; color: {NAVY}; font-size: .98rem; line-height: 1.25; margin: .15rem 0 .3rem; }}
+.tcard .e {{ font-size: .82rem; color: {INK}; line-height: 1.4; }}
+.tcard .k {{ font-size: 1.25rem; font-weight: 700; color: var(--accent, {BLUE}); margin-top: .3rem; }}
+.story p {{ font-size: 1.0rem; line-height: 1.6; color: {INK}; max-width: 980px; }}
+.story h3 {{ margin-top: 1.1rem; }}
+.pill {{ display: inline-block; font-family: {MONO}; font-size: .7rem; padding: .05rem .4rem; border-radius: 10px; background: {LIGHT}; color: {NAVY}; margin-right: .25rem; }}
 </style>
 """
 
@@ -137,3 +167,38 @@ def kpi(value: str, label: str, sub: str = "") -> str:
 
 def note(text: str) -> None:
     st.markdown(f'<div class="note">{text}</div>', unsafe_allow_html=True)
+
+
+THEME_ACCENT = {
+    "The cycle has turned": RED,
+    "Underwriting precision wins": BLUE,
+    "Volatility is structural": MAGENTA,
+    "Value is migrating along the chain": NAVY,
+    "Cyber & AI: growth line, accumulation line": SLATE,
+}
+
+
+def sowhat(sw: dict, key: str) -> None:
+    """Render a chart's executive 'so what': visible headline + body, role guidance on demand."""
+    if not sw:
+        return
+    acc = THEME_ACCENT.get(sw.get("theme", ""), BLUE)
+    st.markdown(
+        f'<div class="sw" style="--accent:{acc}"><div class="tag">{sw.get("theme", "")}</div>'
+        f'<div class="hd">{sw["headline"]}</div><div class="bd">{sw["body"]}</div></div>',
+        unsafe_allow_html=True,
+    )
+    roles = sw.get("roles")
+    if roles:
+        with st.expander("What it means for the CFO, CUO and CEO", expanded=False):
+            cells = "".join(
+                f'<div class="role"><div class="who">{who}</div><div class="why">{r[0]}</div><div class="do">{r[1]}</div></div>'
+                for who, r in roles.items()
+            )
+            watch = sw.get("watch")
+            w = f'<div class="watch"><b>Watch:</b> {watch}</div>' if watch else ""
+            st.markdown(f'<div class="roles">{cells}</div>{w}', unsafe_allow_html=True)
+
+
+def fresh(text: str, stale: bool = False) -> None:
+    st.markdown(f'<div class="fresh{" stale" if stale else ""}">{text}</div>', unsafe_allow_html=True)

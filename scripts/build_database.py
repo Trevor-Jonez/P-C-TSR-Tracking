@@ -465,11 +465,6 @@ CREATE TABLE reconciliation(metric TEXT, period TEXT, deck_value REAL, reference
 CREATE TABLE revisions(metric TEXT, dimension TEXT, period TEXT, first_vintage TEXT, first_value REAL,
                        latest_vintage TEXT, latest_value REAL, n_vintages INT, min_value REAL, max_value REAL,
                        revision REAL, max_spread REAL);
-CREATE TABLE carrier_universe(ticker TEXT PRIMARY KEY, name TEXT, segment TEXT, cik INT);
-CREATE TABLE carrier_fundamentals_raw(ticker TEXT, fiscal_year INT, shares_outstanding REAL, shares_as_of TEXT,
-                                      equity REAL, preferred REAL, goodwill REAL, intangibles REAL, aoci REAL,
-                                      net_income REAL, premiums_earned REAL, losses_incurred REAL, py_development REAL,
-                                      net_investment_income REAL, buybacks REAL, dividends_paid REAL);
 CREATE TABLE prices(date TEXT, ticker TEXT, close REAL, total_return_close REAL);
 CREATE TABLE splits(ticker TEXT, date TEXT, ratio REAL);
 CREATE TABLE build_log(built_at TEXT, item TEXT, detail TEXT);
@@ -492,7 +487,9 @@ def main() -> None:
     obs = normalize(raw, sources)
     print("Ingesting FRED…", file=sys.stderr)
     fred, fred_cat = ingest_fred(a.offline)
-    fund = pd.read_csv(DATA / "fundamentals_raw.csv")
+    from universe import CARRIERS
+    fund_all = pd.read_csv(DATA / "fundamentals_raw.csv")
+    fund = fund_all[fund_all["ticker"].isin([c["ticker"] for c in CARRIERS])]
     rec = reconcile(obs, fred, fund, dict(zip(fred_cat["series_id"], fred_cat["status"])))
     rev = revisions(obs)
 
@@ -515,13 +512,21 @@ def main() -> None:
     fred.to_sql("fred_observations", con, if_exists="append", index=False)
     rec.to_sql("reconciliation", con, if_exists="append", index=False)
     rev.to_sql("revisions", con, if_exists="append", index=False)
-    pd.DataFrame(UNIVERSE).to_sql("carrier_universe", con, if_exists="append", index=False)
-    fund.to_sql("carrier_fundamentals_raw", con, if_exists="append", index=False)
+    pd.DataFrame(UNIVERSE).to_sql("carrier_universe", con, if_exists="replace", index=False)
+    ev = pd.read_csv(DATA / "context" / "events.csv").fillna("")
+    ev["retrieved_at"] = NOW
+    ev.to_sql("events", con, if_exists="replace", index=False)
+    cf = pd.read_csv(DATA / "context" / "context_facts.csv").fillna("")
+    cf["retrieved_at"] = NOW
+    cf.to_sql("context_facts", con, if_exists="replace", index=False)
+    fund_all.to_sql("carrier_fundamentals_raw", con, if_exists="replace", index=False)
     px.to_sql("prices", con, if_exists="append", index=False)
     pd.read_csv(DATA / "splits.csv").to_sql("splits", con, if_exists="append", index=False)
     log = [("decks", f"{len(sources)} presentations, {len(raw)} chart points, {len(obs)} observations"),
            ("fred", f"{fred_cat['status'].eq('ok').sum()}/{len(fred_cat)} series"),
-           ("reconciliation", rec["status"].value_counts().to_dict().__repr__() if len(rec) else "none")]
+           ("reconciliation", rec["status"].value_counts().to_dict().__repr__() if len(rec) else "none"),
+           ("context", f"{len(ev)} dated events, {len(cf)} sourced market facts"),
+           ("universe", f"{len(UNIVERSE)} listed companies")]
     con.executemany("INSERT INTO build_log VALUES (?,?,?)", [(NOW, k, v) for k, v in log])
     con.commit()
     con.execute("VACUUM")
