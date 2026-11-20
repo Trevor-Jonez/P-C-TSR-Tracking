@@ -3,10 +3,13 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 import streamlit as st
 import yfinance as yf
 
 import analysis as A
+import db
+import industry as IND
 import insights as I
 import theme as T
 from universe import BENCHMARKS, UNIVERSE
@@ -35,14 +38,18 @@ def load_prices() -> tuple[pd.DataFrame, pd.DataFrame, str]:
             raise RuntimeError("incomplete download")
         return tr.sort_index(), cl.sort_index(), "live"
     except Exception:
-        tr = pd.read_csv(DATA / "prices_total_return.csv", index_col=0, parse_dates=True)
-        cl = pd.read_csv(DATA / "prices_close.csv", index_col=0, parse_dates=True)
+        tr, cl = db.prices()
         return tr, cl, "snapshot"
 
 
 @st.cache_data
 def load_static() -> tuple[pd.DataFrame, pd.DataFrame]:
-    return pd.read_csv(DATA / "fundamentals_raw.csv"), pd.read_csv(DATA / "splits.csv")
+    return db.fundamentals_raw(), db.splits()
+
+
+@st.cache_resource(ttl=3600, show_spinner="Testing industry series…")
+def industry_build():
+    return IND.build({})
 
 
 @st.cache_data(ttl=3600, show_spinner="Running statistical tests…")
@@ -102,7 +109,8 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-pool = I.build(ctx)
+ind_cards, ind = industry_build()
+pool = I.build(ctx) + ind_cards
 if "deal" not in st.session_state:
     st.session_state.deal = 0
 h1, h2 = st.columns([5, 1])
@@ -134,7 +142,102 @@ for col, ins in zip(cols, cards):
                 st.dataframe(tbl, width="stretch", height=min(240, 38 + 35 * len(tbl)))
 
 st.write("")
-tabs = st.tabs(["Market signals", "Value drivers", "Fundamentals", "Year by year", "Data & methods"])
+tabs = st.tabs(["Industry", "Market signals", "Value drivers", "Fundamentals", "Year by year", "Data & methods"])
+itab, tabs = tabs[0], tabs[1:]
+
+# ---------------------------------------------------------------------------
+# Industry (reconciled deck series + FRED + SEC universe)
+# ---------------------------------------------------------------------------
+with itab:
+    st.markdown("## Industry")
+    st.markdown('<p class="lede">Industry-wide results compiled in the USC Risk &amp; Uncertainty Management Center '
+                "presentations (latest vintage of each figure), reconciled against FRED and against this project's "
+                "SEC-filing universe. Breaks are tested, not drawn by eye.</p>", unsafe_allow_html=True)
+    cr_s, cr_f, cr_d = ind["cr"]
+    ci_s, ci_b, ci_d = ind["ciab"]
+    cat_s, cat_b, cat_d = ind["cat"]
+    roe = IND.series("industry_roe", forecast=True)
+    ytd = db.metric("industry_combined_ratio", period_type="half")
+    k = st.columns(4)
+    k[0].markdown(T.kpi(f"{(ytd['value'].iloc[-1] if len(ytd) else cr_s.iloc[-1]):.1f}",
+                        f"Combined ratio, {ytd['period'].iloc[-1] if len(ytd) else cr_s.index[-1]}",
+                        f"FY{cr_s.index[-1]}: {cr_s.iloc[-1]:.1f} · forecast {cr_f.index[-1]}: {cr_f.iloc[-1]:.1f}" if len(cr_f) else ""),
+                  unsafe_allow_html=True)
+    k[1].markdown(T.kpi(f"{ci_s.iloc[-1]:+.1f}%", f"Commercial rate change, {ci_s.index[-1]}",
+                        f"regime avg since {ci_b[-1]['date']}: {ci_s.iloc[ci_b[-1]['index']:].mean():+.1f}%" if ci_b else ""),
+                  unsafe_allow_html=True)
+    k[2].markdown(T.kpi(f"${cat_s.iloc[-1]:.0f}B", f"Insured cat losses, {cat_s.index[-1]} (real)",
+                        f"since {cat_b[-1]['date']}: avg ${cat_s[cat_s.index >= cat_b[-1]['date']].mean():.0f}B/yr" if cat_b else ""),
+                  unsafe_allow_html=True)
+    ra = roe[roe["is_forecast"] == 0].iloc[-1]
+    rf = roe[roe["is_forecast"] == 1]
+    k[3].markdown(T.kpi(f"{ra['value']:.1f}%", f"Industry ROE, {ra['period']}",
+                        f"forecast {rf['period'].iloc[-1]}: {rf['value'].iloc[-1]:.1f}%" if len(rf) else ""), unsafe_allow_html=True)
+    st.write("")
+
+    l, r = st.columns(2)
+    with l:
+        st.plotly_chart(IND.regimes_fig(ci_s, ci_b, "Commercial pricing regimes: average rate change, all lines (%)", "%", T.NAVY),
+                        width="stretch", config=CFG)
+        T.note(IND.cite(ci_d) + " Breaks: CUSUM with moving-block permutations (robust to autocorrelation).")
+    with r:
+        st.plotly_chart(IND.regimes_fig(cr_s, [], "Industry combined ratio (%), actual and deck forecast", "", T.NAVY,
+                                        forecast=cr_f, zero=False), width="stretch", config=CFG)
+        T.note(IND.cite(cr_d) + " No statistically significant regime break in the annual series; recent lows are cyclical.")
+    l, r = st.columns(2)
+    with l:
+        st.plotly_chart(IND.regimes_fig(cat_s, cat_b, "Insured catastrophe losses, inflation-adjusted ($B)", "B", T.MAGENTA,
+                                        zero=False), width="stretch", config=CFG)
+        T.note(IND.cite(cat_d) + " Breaks tested on log losses.")
+    with r:
+        j = ind.get("dwp_gdp")
+        if j is not None and len(j):
+            fig = go.Figure()
+            fig.add_scatter(x=j.index, y=j["premium"], name="Direct premium growth (deck)", line=dict(color=T.NAVY, width=2))
+            fig.add_scatter(x=j.index, y=j["gdp"], name="Nominal GDP growth (FRED, live)", line=dict(color=T.BLUE, width=2, dash="dash"))
+            fig.add_hline(y=0, line_color=T.MID)
+            fig.update_layout(title="Premium growth vs nominal GDP growth (y/y %)", height=360, xaxis=dict(type="category"),
+                              margin=dict(t=64, b=70))
+            st.plotly_chart(fig, width="stretch", config=CFG)
+            rr = np.corrcoef(j["premium"], j["gdp"])[0, 1]
+            T.note(f"Pearson r = {rr:.2f} over {len(j)} quarters. Premiums: S&P/ISO via deck; GDP: BEA via FRED, pulled at build time.")
+
+    st.markdown("#### Deck figures against our own data")
+    l, r = st.columns(2)
+    fa = ctx["fund_all"]
+    with l:
+        pa = IND.series("personal_auto_combined_ratio")
+        pers = fa[(fa["segment"] == "Personal") & fa["loss_ratio_pct"].notna()]
+        pl = pers.groupby("fiscal_year").apply(lambda g: g["losses_incurred"].sum() / g["premiums_earned"].sum() * 100)
+        fig = make_subplots(specs=[[{"secondary_y": True}]])
+        fig.add_scatter(x=pa["period"], y=pa["value"], name="Personal auto combined ratio (industry)", line=dict(color=T.MAGENTA, width=2.2))
+        fig.add_scatter(x=[str(y) for y in pl.index], y=pl.values, name="Personal carriers' loss ratio (SEC, ours)",
+                        line=dict(color=T.NAVY, width=2, dash="dash"), secondary_y=True)
+        fig.update_layout(title="Personal auto: industry combined ratio vs our personal carriers", height=360,
+                          xaxis=dict(type="category"), margin=dict(t=64, b=80))
+        fig.update_yaxes(title_text="Combined ratio %", secondary_y=False)
+        fig.update_yaxes(title_text="Loss ratio %", secondary_y=True, showgrid=False)
+        st.plotly_chart(fig, width="stretch", config=CFG)
+        common = sorted(set(pa["period"]) & {str(y) for y in pl.index})
+        if len(common) >= 4:
+            rr = np.corrcoef(pa.set_index("period").loc[common, "value"], [pl[int(c)] for c in common])[0, 1]
+            T.note(f"Correlation over {common[0]}–{common[-1]}: r = {rr:.2f}. Loss ratio excludes expenses, so levels differ; the "
+                   "test is whether the turn lines up.")
+    with r:
+        y10 = db.fred("DGS10").resample("YE").last()
+        ao = fa.groupby("fiscal_year")["aoci_to_tbv_pct"].median()
+        fig = make_subplots(specs=[[{"secondary_y": True}]])
+        fig.add_bar(x=[str(y) for y in ao.index if y >= 2019], y=[ao[y] for y in ao.index if y >= 2019],
+                    name="Median AOCI as % of TBV (SEC, ours)", marker_color=T.MAGENTA)
+        yy = y10[y10.index.year >= 2019]
+        fig.add_scatter(x=[str(d.year) for d in yy.index], y=yy.values, name="10-yr Treasury, year-end (FRED)",
+                        line=dict(color=T.NAVY, width=2.4), secondary_y=True)
+        fig.update_layout(title="Rates explain the 2022 book-value shock", height=360, xaxis=dict(type="category"),
+                          margin=dict(t=64, b=80))
+        fig.update_yaxes(title_text="AOCI % of TBV", secondary_y=False)
+        fig.update_yaxes(title_text="10-yr yield %", secondary_y=True, showgrid=False)
+        st.plotly_chart(fig, width="stretch", config=CFG)
+        T.note("Unrealized bond losses (AOCI) move inversely with Treasury yields; FRED DGS10 pulled at build time.")
 
 # ---------------------------------------------------------------------------
 # Market signals
@@ -417,7 +520,43 @@ with tabs[3]:
 # ---------------------------------------------------------------------------
 with tabs[4]:
     st.markdown("## Data & methods")
+    rec = db.table("reconciliation")
+    srcs = db.table("sources")
+    st.markdown("#### Reconciliation")
+    st.markdown('<p class="lede">Every deck figure that has an independent public reference is checked against it at '
+                "build time. Tolerances are set per series; a &ldquo;close&rdquo; or &ldquo;variance&rdquo; result is "
+                "explained in the note column, not silently dropped.</p>", unsafe_allow_html=True)
+    stc = rec["status"].value_counts()
+    kk = st.columns(5)
+    for col, (lab, keys) in zip(kk, [("Match", ["match"]), ("Close", ["close"]), ("Variance", ["variance"]),
+                                     ("Consistent / divergent", ["consistent", "divergent"]),
+                                     ("Reference unavailable", ["reference unavailable"])]):
+        col.markdown(T.kpi(f"{int(sum(stc.get(x, 0) for x in keys))}", lab, ""), unsafe_allow_html=True)
+    summ = (rec.groupby(["metric", "reference_source"])["status"].value_counts().unstack(fill_value=0).reset_index())
+    st.dataframe(summ, hide_index=True, width="stretch", height=300)
+    flt = st.multiselect("Show checks with status", sorted(rec["status"].unique()),
+                         default=[s for s in ["variance", "close", "divergent"] if s in set(rec["status"])])
+    st.dataframe(rec[rec["status"].isin(flt)].round(2), hide_index=True, width="stretch", height=280)
+    log = db.table("build_log")
+    st.caption(f"Database built {log['built_at'].iloc[0]} · {' · '.join(log['detail'])}")
+    st.markdown("#### Sources")
+    st.dataframe(srcs[["vintage_date", "title", "publisher", "url", "pdf_url", "sha256"]].sort_values("vintage_date", ascending=False),
+                 hide_index=True, width="stretch", height=260,
+                 column_config={"url": st.column_config.LinkColumn("Deck (pptx)"), "pdf_url": st.column_config.LinkColumn("PDF")})
+    fc = db.table("fred_catalog")
+    st.dataframe(fc, hide_index=True, width="stretch", column_config={"url": st.column_config.LinkColumn("FRED page")})
+    with open(DATA / "pc_market.db", "rb") as fh:
+        st.download_button("Download the full database (SQLite)", fh.read(), file_name="pc_market.db",
+                           mime="application/x-sqlite3")
+
+    st.markdown("#### Explore")
     datasets = {
+        "Industry metrics (latest vintage)": db.q("SELECT l.metric, c.label, l.dimension, l.period, l.value, l.unit, l.flag, "
+                                                  "l.vintage_date, l.source_id, l.slide FROM industry_latest l "
+                                                  "LEFT JOIN metric_catalog c USING(metric) ORDER BY metric, dimension, period"),
+        "Industry metrics (all vintages)": db.table("observations"),
+        "Vintage revisions": db.table("revisions"),
+        "Reconciliation checks": rec,
         "Fundamentals by carrier-year (derived)": ctx["fund_all"][["ticker", "name", "segment", "fiscal_year", "premiums_earned",
                                                                   "net_income", "tbv", "tbvps", "p_tbv", "rote_pct", "loss_ratio_pct",
                                                                   "aoci_to_tbv_pct", "tbvps_growth_pct", "premium_growth_pct"]],
@@ -437,6 +576,10 @@ with tabs[4]:
                        mime="text/csv")
     st.markdown("#### Methods")
     st.markdown(
+        "- **Database:** `data/pc_market.db` (SQLite), rebuilt by `scripts/build_database.py`: every chart series embedded "
+        "in the USC Risk & Uncertainty Management Center presentations (each deck's URL, vintage date and SHA-256 stored), "
+        "mapped to canonical metrics with all vintages kept; FRED series; SEC fundamentals; prices; reconciliation and "
+        "revision tables. The `industry_latest` view returns the newest vintage of each figure.\n"
         f"- **Universe:** {len(ALL_TICKERS)} US-listed P&C carriers with continuous trading since 2020, grouped into four "
         "segments by dominant business mix (project classification).\n"
         "- **Fundamentals:** SEC EDGAR XBRL company facts from annual 10-K filings (`scripts/build_fundamentals.py`). "

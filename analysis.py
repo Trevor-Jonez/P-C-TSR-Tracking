@@ -178,10 +178,20 @@ def _cusum_split(x: np.ndarray, min_size: int) -> tuple[int, float]:
     return i + 1, float(stat[i])
 
 
+def _shuffle(x: np.ndarray, rng, block: int) -> np.ndarray:
+    """Plain permutation (block=1) or moving-block permutation that preserves short-run autocorrelation."""
+    if block <= 1:
+        return rng.permutation(x)
+    blocks = [x[i:i + block] for i in range(0, len(x), block)]
+    order = rng.permutation(len(blocks))
+    return np.concatenate([blocks[i] for i in order])
+
+
 def detect_regimes(weekly: pd.Series, min_weeks: int = 13, alpha: float = 0.05, n_perm: int = 999,
-                   seed: int = 7) -> list[dict]:
+                   seed: int = 7, block: int = 1) -> list[dict]:
     """Recursive binary segmentation; a split is kept only if its CUSUM beats the permutation null.
 
+    Use block > 1 for autocorrelated level series (e.g. quarterly rate changes, annual ratios).
     Returns a list of breaks: {index, date, stat, p_value}.
     """
     rng = np.random.default_rng(seed)
@@ -195,7 +205,7 @@ def detect_regimes(weekly: pd.Series, min_weeks: int = 13, alpha: float = 0.05, 
         k, stat = _cusum_split(x, min_weeks)
         null = np.empty(n_perm)
         for b in range(n_perm):
-            null[b] = _cusum_split(rng.permutation(x), min_weeks)[1]
+            null[b] = _cusum_split(_shuffle(x, rng, block), min_weeks)[1]
         p = (1 + (null >= stat).sum()) / (n_perm + 1)
         if p < alpha:
             found.append({"index": lo + k, "date": weekly.index[lo + k], "stat": stat, "p_value": p})
