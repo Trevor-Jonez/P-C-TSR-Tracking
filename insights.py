@@ -235,7 +235,7 @@ def build(ctx: dict) -> list[Insight]:
                 f"({top['residual_pct']:+.1f}%{', ' + top['catalyst'] if isinstance(top['catalyst'], str) else ''}).",
                 p, len(shocks), SRC_PX, T.RED, _shock_fig,
                 shocks[["residual_pct", "z", "carriers_down_pct", "catalyst"]].round(2),
-                so_what="The market forgives catastrophes quickly and reserve surprises slowly: credibility is the asset."))
+                so_what="Sell-offs outnumber rallies: the sector's idiosyncratic risk is mostly downside, so concentration and reserving deserve board time."))
 
     # 5b. One insight per year: that year's largest attributed, insurance-specific shock
     if len(shocks):
@@ -250,8 +250,8 @@ def build(ctx: dict) -> list[Insight]:
                 pz, len(shocks), ("source: " + r["source_url"].split("/")[2].replace("www.", "")
                                   if isinstance(r.get("source_url"), str) and r["source_url"].startswith("http") else "Event log"),
                 T.RED if r["z"] < 0 else T.BLUE, None, None, year=int(yr),
-                so_what={"Earnings / reserves": "Reserve surprises are the shocks that stick: pre-empt them with independent reviews.",
-                         "Catastrophe": "Cat sell-offs fade when losses land inside reinsurance: concentration is the real risk.",
+                so_what={"Earnings / reserves": "Reserve surprises are priced in a single day: pre-empt them with independent reviews before the market does.",
+                         "Catastrophe": "Cat exposure is re-priced for weeks as estimates develop: concentration is the real risk.",
                          "Macro": "Macro shocks hit the group together: they're about yields and risk appetite, not underwriting.",
                          "Earnings / growth": "Growth-priced specialists get punished hardest when growth merely slows.",
                          "Pricing cycle": "The market sells the turn in pricing before it shows in earnings.",

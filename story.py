@@ -248,9 +248,9 @@ def build(F: dict) -> dict:
         body=(f"The strongest candidate break in excess returns isn't significant ({_p(F['best_break_p'])}), so there's no regime change "
               f"in how the market values the group. The action is in the shocks: <b>{F['n_shocks']}</b> insurance-specific shock days, "
               f"<b>{F['n_neg']}</b> of them sell-offs, and <b>{F['n_attr']}</b> traced to a named cause (reserve charges, catastrophes, rate "
-              "scares). The market forgives cat losses within weeks; it does not forgive reserve surprises."),
+              "scares). Reserve surprises get priced in a single day; catastrophe exposure keeps bleeding for weeks as loss estimates develop."),
         roles={
-            "CFO": ("Reserve charges are the shocks that stick (Allstate 2022, Selective 2024, Markel 2023).",
+            "CFO": ("Reserve charges take about 5% off a stock in one day (Allstate 2022, Markel 2023, Selective 2024).",
                     "Pre-empt: run independent reserve reviews on post-2015 casualty years before the market does it for you."),
             "CUO": ("Most negative shocks trace to long-tail lines where trend was under-picked.",
                     "Raise loss picks on recent accident years in GL, commercial auto and umbrella now, not after a charge."),
@@ -576,7 +576,8 @@ def executive(F: dict) -> list[tuple[str, str]]:
          f"Not growth, and not even book value. Across our carriers, the change in valuation multiple explains TSR rank "
          f"(ρ = {F.get('rho_rerate', np.nan):.2f}); book growth doesn't (ρ = {F.get('rho_tbv', np.nan):.2f}). The market paid for "
          "<i>believable</i> earnings: carriers whose loss ratios held, whose reserves didn't surprise, whose capital came back to "
-         "shareholders. The shock days prove the point: cat losses are forgiven in weeks, reserve charges are not."),
+         "shareholders. The shock days prove the point: a reserve surprise is priced in a single day, while catastrophe exposure "
+         "is re-priced for weeks as estimates develop."),
         ("Where the pressure lands next",
          "Long-tail casualty is where trend outran price (Allstate 2022, Markel 2023 and Selective 2024 all took the same lesson in public). "
          f"Property is where capacity floods back fastest: reinsurance down 12–16% this year, cat losses still running at ${F.get('cat_after', np.nan):.0f}B a year. "

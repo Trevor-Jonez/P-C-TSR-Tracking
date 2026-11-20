@@ -27,7 +27,8 @@ Key tables: `sources`, `chart_series_raw`, `observations` (all vintages), view `
 | Section | What it shows |
 |---|---|
 | **Insight deck** | Cards drawn from every finding that passes a significance test (p < 0.10), each with a one-line "so what". Filter by **year** (2021 → latest) or **Shuffle**; expand any card for its evidence chart and data. |
-| **Executive story** | Five themes laddered from the data, the front-page narrative, investments and behaviours to reinforce |
+| **Annual report (current year)** | The year's thesis, five current-year themes, TSR / underwriting / event-study / market-implied sections, leader-vs-laggard behaviours, and C-suite playbooks (CEO, CUO, CIO, CTO, COO, CSO) with named leaders and laggards |
+| **Company scorecard** | Pick any of 40 companies: peer-percentile scorecard, return and loss-ratio charts, what the price implies, strengths / watch-outs, and a sourced punchlist (investments, products, deals, shock days, material 8-Ks) |
 | Industry | Commercial pricing regimes (tested breaks), combined ratio with forecast, cat-loss step change, premiums vs GDP, deck figures against our SEC data and FRED |
 | Sub-industries | Carriers vs reinsurers vs retail brokers vs wholesale & MGA vs insurtech; admitted vs E&S; lens-level returns, valuation and growth |
 | Cyber & AI | US cyber premium & loss ratio (NAIC), pricing (Marsh), claims (Coalition), AI coverage vs exclusion timeline, specialist M&A |
@@ -40,6 +41,12 @@ Key tables: `sources`, `chart_series_raw`, `observations` (all vintages), view `
 Sidebar settings (exclude statistical outliers, shock threshold, segments) recompute every test, chart and card.
 
 ## Refreshing the data
+
+```bash
+SEC_USER_AGENT="Your Name you@example.com" python scripts/build_current.py
+```
+(current-year 10-Q fundamentals and material 8-K filings)
+
 
 ```bash
 SEC_USER_AGENT="Your Name you@example.com" python scripts/build_fundamentals.py

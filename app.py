@@ -10,10 +10,13 @@ from plotly.subplots import make_subplots
 from scipy import stats as _st
 
 import analysis as A
+import current as CU
 import cyber as CY
 import db
 import industry as IND
 import insights as I
+import report as RP
+import scorecard as SC
 import story as SY
 import subind as SB
 import theme as T
@@ -81,6 +84,17 @@ def compute(active: tuple[str, ...], z_cut: float, px_tag: str):
                 y0=y0, y1=y1, rel=rel, weekly=weekly, best_break=A.best_break(weekly))
 
 
+@st.cache_data(ttl=3600, show_spinner="Reading 10-Q filings…")
+def cur_build(px_tag: str):
+    tr, cl, _ = load_prices()
+    raw, splits = load_static()
+    fund = A.build_fundamentals(raw, cl, splits)
+    yt = CU.ytd_table(tr, cl, fund)
+    T_ = CU.tests(yt, tr, fund)
+    es = CU.event_study(tr)
+    return fund, yt, T_, es, CU.event_test(es)
+
+
 @st.cache_data(ttl=3600)
 def sub_build(px_tag: str):
     tr, cl, _ = load_prices()
@@ -134,6 +148,11 @@ sub_ct, sub_idx, sub_t = sub_build(px_source)
 cyf = CY.facts()
 F = SY.facts(ctx, ind, sub_ct, sub_t, cyf)
 S = SY.build(F)
+fund_full, yt, TY, es, et = cur_build(px_source)
+CUR_YEAR = TY["year"]
+beh_tbl, beh = CU.behaviours(ctx["fund_all"], ctx["decomp_all"], y0, y1)
+RPT = RP.build(F, TY, et, yt, beh_tbl, sub_t, sub_ct)
+cur_cards = CU.insights_current(yt, TY, et)
 
 # ---------------------------------------------------------------------------
 # Header + insight deck (filterable by year)
@@ -145,12 +164,12 @@ st.markdown(
 )
 stamp("mix")
 
-pool = I.build(ctx) + ind_cards
+pool = cur_cards + I.build(ctx) + ind_cards
 years_avail = sorted({i.year for i in pool if i.year and i.year >= y0}, reverse=True)
 if "deal" not in st.session_state:
     st.session_state.deal = 0
 h1, h2, h3 = st.columns([1.8, 3.8, 0.9])
-h1.markdown(f"**Market insights** &nbsp;<span style='color:{T.SLATE};font-size:.85rem'>{len(pool)} tested findings (p&lt;0.10)</span>",
+h1.markdown(f"**{CUR_YEAR} market insights** &nbsp;<span style='color:{T.SLATE};font-size:.85rem'>{len(pool)} tested findings (p&lt;0.10)</span>",
             unsafe_allow_html=True)
 with h2:
     opts = ["Latest"] + [str(y) for y in years_avail] + ["All"]
@@ -163,7 +182,17 @@ if h3.button("↻ Shuffle", use_container_width=True):
     st.session_state.deal += 1
 
 if yr_pick == "Latest":
-    cards = I.deal(pool, 3, st.session_state.deal, latest_year=y1)
+    # current year first: this year's tested findings, then the strongest structural ones
+    cur = sorted([i for i in pool if i.year == CUR_YEAR], key=lambda i: i.p)
+    if st.session_state.deal:
+        rng = np.random.default_rng(st.session_state.deal)
+        cur = [cur[k] for k in rng.permutation(len(cur))]
+    seen, cards = set(), []
+    for ins in cur:
+        if ins.theme not in seen:
+            cards.append(ins)
+            seen.add(ins.theme)
+    cards = (cards + [i for i in I.deal(pool, 6, st.session_state.deal, latest_year=CUR_YEAR) if i not in cards])[:3]
 else:
     sub_pool = pool if yr_pick == "All" else [i for i in pool if i.year == int(yr_pick)]
     if st.session_state.deal == 0:
@@ -206,49 +235,212 @@ if not cards:
     st.info("No statistically supported findings for this year yet.")
 
 st.write("")
-tabs = st.tabs(["Executive story", "Industry", "Sub-industries", "Cyber & AI", "Market signals", "Value drivers",
-                "Fundamentals", "Year by year", "Data & methods"])
+tabs_all = st.tabs([f"{CUR_YEAR} Report", "Company scorecard", "Industry", "Sub-industries", "Cyber & AI", "Market signals",
+                    "Value drivers", "Fundamentals", "Year by year", "Data & methods"])
+rtab, ctab = tabs_all[0], tabs_all[1]
+tabs = [None] + list(tabs_all[2:])
 
 # ---------------------------------------------------------------------------
-# Executive story
+# Annual report
 # ---------------------------------------------------------------------------
-with tabs[0]:
-    st.markdown("## The story in five themes")
-    st.markdown('<p class="lede">Every claim below points to a chart and a test elsewhere in this app. Themes are ranked by '
-                "how much they should change what an executive team does in the next 12 months.</p>", unsafe_allow_html=True)
+with rtab:
+    st.markdown(f"## {RPT['title']}")
+    st.markdown(f'<div class="dek">{RPT["dek"]}</div>', unsafe_allow_html=True)
     cards_html = "".join(
-        f'<div class="tcard" style="--accent:{T.THEME_ACCENT[t["t"]]}"><div class="n">THEME {t["n"]}</div>'
-        f'<div class="t">{t["t"]}</div><div class="k">{t["k"]}</div><div class="e">{t["e"]}</div></div>'
-        for t in SY.themes(F))
+        f'<div class="tcard" style="--accent:{[T.RED, T.MAGENTA, T.NAVY, T.BLUE, T.SLATE][k]}"><div class="n">{CUR_YEAR} THEME {k + 1:02d}</div>'
+        f'<div class="t">{th["t"]}</div><div class="k">{th["k"]}</div><div class="e">{th["e"]}</div></div>'
+        for k, th in enumerate(RPT["themes"]))
     st.markdown(f'<div class="theme-row">{cards_html}</div>', unsafe_allow_html=True)
     stamp("mix")
     st.write("")
-    l, r = st.columns([1.6, 1])
+    l, r = st.columns([1.55, 1])
     with l:
-        html = "".join(f"<h3>{h}</h3><p>{b}</p>" for h, b in SY.executive(F))
-        st.markdown(f'<div class="story">{html}</div>', unsafe_allow_html=True)
+        st.markdown('<div class="story">' + "".join(f"<p>{p}</p>" for p in RPT["intro"]) + "</div>", unsafe_allow_html=True)
     with r:
-        st.markdown("#### Where to look")
-        st.markdown(
-            "| Theme | Evidence tab |\n|---|---|\n"
-            f"| {SY.TH1} | Industry · Market signals · Fundamentals |\n"
-            f"| {SY.TH2} | Value drivers · Fundamentals |\n"
-            f"| {SY.TH3} | Industry · Market signals |\n"
-            f"| {SY.TH4} | Sub-industries |\n"
-            f"| {SY.TH5} | Cyber & AI |")
-        st.markdown("#### Investments that matter")
-        st.markdown(
-            "- **Pricing speed:** indication-to-filing in weeks (the decisive capability in personal auto this cycle)\n"
-            "- **Property data:** geospatial, roof, wildfire and convective-storm scoring as rating variables\n"
-            "- **AI in the workflow:** submission triage, claims severity prediction, reserve early-warning\n"
-            "- **Delegated-authority oversight:** real-time bordereaux and MGA performance data\n"
-            "- **Cyber prevention as product:** scanning, response and controls bundled into cover")
-        st.markdown("#### Behaviours to reinforce")
-        st.markdown(
-            "- Reward underwriters for business **declined**, not just bound\n"
-            "- Report **ex-AOCI** book value and **accident-year** loss ratios\n"
-            "- Guide conservatively; surface reserve philosophy **before** earnings\n"
-            "- Treat excess capital as **shareholder money** in a soft market")
+        k = st.columns(2)
+        k[0].markdown(T.kpi(f"{TY['carrier_ret_med']:+.0f}%", f"Carriers, {CUR_YEAR} YTD (median)", f"S&P 500 {TY['spx_ytd']:+.0f}%"), unsafe_allow_html=True)
+        k[1].markdown(T.kpi(f"{TY['ni'][0]:+.0f}%", "Net income, 9M (median)", f"{TY['ni'][2] - TY['ni'][3]} of {TY['ni'][2]} up"), unsafe_allow_html=True)
+        k = st.columns(2)
+        k[0].markdown(T.kpi(f"{TY['lr'][0]:+.1f} pp", "Loss ratio, 9M vs 9M", f"{TY['lr'][3]} of {TY['lr'][2]} improved"), unsafe_allow_html=True)
+        k[1].markdown(T.kpi(f"{TY['aoci'][0]:+.1f} pp", "AOCI, % of TBV YTD", f"10-yr {TY.get('y10_chg_bp', np.nan):+.0f} bp"), unsafe_allow_html=True)
+
+    st.markdown(f"### {RPT['sections']['tsr'][0]}")
+    l, r = st.columns([1.25, 1])
+    with l:
+        car = yt[yt["sub_industry"] == "Carrier"].dropna(subset=["return_ytd_pct"]).sort_values("return_ytd_pct")
+        fig = go.Figure(go.Bar(x=car["return_ytd_pct"], y=car["name"], orientation="h",
+                               marker_color=[T.POS if v >= TY["spx_ytd"] else (T.SLATE if v >= 0 else T.NEG) for v in car["return_ytd_pct"]],
+                               text=[f"{v:+.0f}%" for v in car["return_ytd_pct"]], textposition="outside", cliponaxis=False))
+        fig.add_vline(x=TY["spx_ytd"], line_dash="dash", line_color=T.MAGENTA)
+        fig.add_annotation(x=TY["spx_ytd"], y=1, yref="paper", yanchor="bottom", text=f"S&P 500 {TY['spx_ytd']:+.0f}%", showarrow=False,
+                           font=dict(size=11, color=T.NAVY))
+        fig.update_layout(title=f"Carrier total return, {CUR_YEAR} year to date", height=max(420, 20 * len(car) + 100), showlegend=False,
+                          margin=dict(t=60, b=30, r=40), xaxis=dict(range=[car["return_ytd_pct"].min() - 8, car["return_ytd_pct"].max() + 8]))
+        st.plotly_chart(fig, width="stretch", config=CFG)
+        stamp("px")
+    with r:
+        st.markdown(f'<div class="story"><p>{RPT["sections"]["tsr"][1]}</p></div>', unsafe_allow_html=True)
+        subm = pd.Series(TY["ret_med"]).reindex(SB.ORDER).dropna()
+        fig = go.Figure(go.Bar(x=subm.index, y=subm.values, marker_color=[SUB_COLORS[s_] for s_ in subm.index],
+                               text=[f"{v:+.0f}%" for v in subm.values], textposition="outside", cliponaxis=False))
+        fig.add_hline(y=TY["spx_ytd"], line_dash="dash", line_color=T.MAGENTA)
+        fig.update_layout(title=f"Median {CUR_YEAR} YTD return by sub-industry", height=300, showlegend=False, margin=dict(t=56, b=30))
+        st.plotly_chart(fig, width="stretch", config=CFG)
+        stamp("px")
+
+    st.markdown(f"### {RPT['sections']['uw'][0]}")
+    l, r = st.columns([1.25, 1])
+    with l:
+        c2 = yt[yt["sub_industry"] == "Carrier"].dropna(subset=["loss_ratio_chg_pp"]).sort_values("loss_ratio_chg_pp", ascending=False)
+        fig = go.Figure(go.Bar(x=c2["loss_ratio_chg_pp"], y=c2["name"], orientation="h",
+                               marker_color=[T.NEG if v > 0 else T.POS for v in c2["loss_ratio_chg_pp"]],
+                               text=[f"{v:+.1f}" for v in c2["loss_ratio_chg_pp"]], textposition="outside", cliponaxis=False))
+        lo_, hi_ = c2["loss_ratio_chg_pp"].min(), c2["loss_ratio_chg_pp"].max()
+        fig.update_layout(title=f"Loss-ratio change, 9M {CUR_YEAR} vs 9M {CUR_YEAR - 1} (pp; lower is better)", height=max(380, 20 * len(c2) + 100),
+                          showlegend=False, margin=dict(t=60, b=30, r=40), xaxis=dict(range=[lo_ - 3, hi_ + 3]))
+        st.plotly_chart(fig, width="stretch", config=CFG)
+        stamp("sec")
+    with r:
+        st.markdown(f'<div class="story"><p>{RPT["sections"]["uw"][1]}</p></div>', unsafe_allow_html=True)
+        st.markdown(f"#### {RPT['sections']['beh'][0]}")
+        st.markdown(f'<div class="story"><p>{RPT["sections"]["beh"][1]}</p></div>', unsafe_allow_html=True)
+        bt = beh_tbl.copy()
+        st.dataframe(bt.round(2), hide_index=True, width="stretch")
+        stamp("sec")
+
+    st.markdown(f"### {RPT['sections']['event'][0]}")
+    l, r = st.columns([1.25, 1])
+    with l:
+        g = es.groupby("group")[["day0_pct", "next20_pct"]].mean().reindex(
+            ["Reserve / earnings charge", "Catastrophe", "Earnings / growth", "Pricing cycle", "Macro"]).dropna()
+        n = es["group"].value_counts()
+        fig = go.Figure()
+        fig.add_bar(x=[f"{i}<br>(n={n.get(i, 0)})" for i in g.index], y=g["day0_pct"], name="Event day", marker_color=T.NAVY,
+                    text=[f"{v:+.1f}%" for v in g["day0_pct"]], textposition="outside", cliponaxis=False)
+        fig.add_bar(x=[f"{i}<br>(n={n.get(i, 0)})" for i in g.index], y=g["next20_pct"], name="Next 20 trading days", marker_color=T.MAGENTA,
+                    text=[f"{v:+.1f}%" for v in g["next20_pct"]], textposition="outside", cliponaxis=False)
+        fig.add_hline(y=0, line_color=T.MID)
+        fig.update_layout(title="Abnormal return around events (stock minus carrier basket, %)", barmode="group", height=380, margin=dict(t=56, b=80))
+        st.plotly_chart(fig, width="stretch", config=CFG)
+        stamp("ctx")
+    with r:
+        st.markdown(f'<div class="story"><p>{RPT["sections"]["event"][1]}</p></div>', unsafe_allow_html=True)
+        st.markdown(f"#### {RPT['sections']['implied'][0]}")
+        st.markdown(f'<div class="story"><p>{RPT["sections"]["implied"][1]}</p></div>', unsafe_allow_html=True)
+
+    l, r = st.columns([1, 1])
+    with l:
+        c3 = yt[(yt["sub_industry"] == "Carrier")].dropna(subset=["implied_rote_pct", "rote_ytd_ann"])
+        c3 = c3[c3["rote_ytd_ann"].between(-10, 60)]
+        fig = go.Figure()
+        fig.add_scatter(x=c3["rote_ytd_ann"], y=c3["implied_rote_pct"], mode="markers+text", text=c3.index, textposition="top center",
+                        marker=dict(size=11, color=T.BLUE, line=dict(width=1, color="white")), textfont=dict(size=10, color=T.INK),
+                        customdata=c3["name"], hovertemplate="%{customdata}<br>actual %{x:.1f}% · implied %{y:.1f}%<extra></extra>", showlegend=False)
+        lim = [0, max(c3["rote_ytd_ann"].max(), c3["implied_rote_pct"].max()) * 1.1]
+        fig.add_scatter(x=lim, y=lim, mode="lines", line=dict(color=T.SLATE, dash="dot"), name="implied = actual", showlegend=True)
+        fig.update_layout(title=f"Market-implied vs actual RoTE ({CUR_YEAR} YTD annualised)", height=380, xaxis_title="Actual RoTE %",
+                          yaxis_title="Implied by P/TBV %", margin=dict(t=56, b=70))
+        st.plotly_chart(fig, width="stretch", config=CFG)
+        stamp("mix")
+    with r:
+        st.markdown("#### Reading the chart")
+        st.markdown("Below the dotted line, the market expects returns to fade, so there's room to re-rate if you prove durability. "
+                    "Above it, the market is already paying for durability, and any wobble gets punished.")
+        st.caption("Implied RoTE = P/TBV × (cost of equity − g) + g, with cost of equity 9% and g 3% (stated assumptions).")
+
+    st.markdown("### C-suite playbooks: why it matters, what to do, who's leading")
+    ptabs = st.tabs([f"{r_} · {RP.ROLE_TITLES[r_]}" for r_ in RP.ROLES])
+    for ptab, role in zip(ptabs, RP.ROLES):
+        P = RPT["personas"][role]
+        with ptab:
+            lead = "".join(f"<li><b>{n_}</b>: {d_}</li>" for n_, d_ in P["leaders"])
+            lag = "".join(f"<li><b>{n_}</b>: {d_}</li>" for n_, d_ in P["laggards"])
+            st.markdown(
+                f'<div class="persona"><h4>{RP.ROLE_TITLES[role]}</h4><div class="why">{P["why"]}</div>'
+                f'<div class="lbl">What to do</div><ul>{"".join(f"<li>{x}</li>" for x in P["do"])}</ul>'
+                f'<div class="lbl">Evidence</div><ul>{"".join(f"<li>{x}</li>" for x in P["evidence"])}</ul>'
+                f'<div class="lbl">Leaders and the behaviour behind it</div><ul class="lead">{lead}</ul>'
+                f'<div class="lbl">Laggards and what held them back</div><ul class="lag">{lag}</ul></div>',
+                unsafe_allow_html=True)
+            stamp("ctx")
+    for h, b in RPT["closing"]:
+        st.markdown(f"### {h}")
+        st.markdown(f'<div class="story"><p>{b}</p></div>', unsafe_allow_html=True)
+
+# ---------------------------------------------------------------------------
+# Company scorecard
+# ---------------------------------------------------------------------------
+with ctab:
+    st.markdown("## Company scorecard")
+    names = {c["ticker"]: f"{c['name']} ({c['ticker']}) · {c['sub_industry']}" for c in UNIVERSE}
+    pick = st.selectbox("Company", list(names), index=list(names).index("TRV"), format_func=lambda t_: names[t_], key="sc_pick")
+    u = SC.U.loc[pick]
+    fh = SC.history(fund_full, y0, y1)
+    sc = SC.scorecard(pick, yt, sub_ct, ctx["decomp_all"], fh)
+    v = SC.verdict(pick, sc, yt)
+    st.markdown(f'<div class="dek">{v["headline"]}</div>', unsafe_allow_html=True)
+    st.caption(f"{u['sub_industry']} · {u['lens']} · {u['market']} · peers = {len(SC.peers(pick))} {u['sub_industry'].lower()}s")
+    k = st.columns(5)
+    def g_(df, col):
+        try:
+            return df.loc[pick, col]
+        except Exception:
+            return np.nan
+    ctx_ = sub_ct.set_index("ticker")
+    k[0].markdown(T.kpi(f"{g_(yt, 'return_ytd_pct'):+.1f}%", f"Total return {CUR_YEAR} YTD", f"peers {yt.loc[yt.index.intersection(SC.peers(pick)), 'return_ytd_pct'].median():+.1f}%"), unsafe_allow_html=True)
+    k[1].markdown(T.kpi(f"{g_(ctx_, 'ann_since_2020'):+.1f}%", "Annualised since 2020", f"1-yr {g_(ctx_, 'ret_1y'):+.1f}%"), unsafe_allow_html=True)
+    lr_now = g_(yt, "loss_ratio_ytd")
+    k[2].markdown(T.kpi(f"{lr_now:.1f}%" if pd.notna(lr_now) else "n/a", "Loss ratio, 9M",
+                        f"{g_(yt, 'loss_ratio_chg_pp'):+.1f} pp vs prior" if pd.notna(lr_now) else "not an underwriter / not tagged"), unsafe_allow_html=True)
+    k[3].markdown(T.kpi(f"{g_(yt, 'rote_ytd_ann'):.1f}%" if pd.notna(g_(yt, 'rote_ytd_ann')) else f"{g_(yt, 'net_income_growth_pct'):+.0f}%",
+                        "RoTE, annualised" if pd.notna(g_(yt, 'rote_ytd_ann')) else "Net income growth, 9M", ""), unsafe_allow_html=True)
+    pv = g_(yt, "p_tbv_now")
+    k[4].markdown(T.kpi(f"{pv:.2f}×" if pd.notna(pv) else f"{g_(ctx_, 'pe'):.1f}×", "Price / tangible book" if pd.notna(pv) else "Price / earnings",
+                        f"implied RoTE {g_(yt, 'implied_rote_pct'):.0f}%" if pd.notna(pv) else ""), unsafe_allow_html=True)
+    stamp("mix")
+    l, r = st.columns([1.2, 1])
+    with l:
+        st.plotly_chart(SC.price_fig(pick, tr, sub_idx), width="stretch", config=CFG)
+        stamp("px")
+    with r:
+        lf = SC.lr_fig(pick, fund_full, yt)
+        if lf is not None:
+            st.plotly_chart(lf, width="stretch", config=CFG)
+            stamp("sec")
+        else:
+            st.markdown("#### What the market implies")
+    st.markdown("#### What the market implies")
+    st.markdown(f'<div class="sw" style="--accent:{T.NAVY}"><div class="bd">{v["market"]}</div></div>', unsafe_allow_html=True)
+    l, r = st.columns([1.15, 1])
+    with l:
+        st.markdown("#### Scorecard vs peers")
+        show = sc[["Metric", "Value", "Peer median", "Percentile vs peers"]].copy()
+        st.dataframe(show, hide_index=True, width="stretch", height=min(680, 38 + 35 * len(show)),
+                     column_config={"Percentile vs peers": st.column_config.ProgressColumn("Percentile vs peers (higher = better)",
+                                                                                         min_value=0, max_value=100, format="%d")})
+        stamp("mix")
+    with r:
+        st.markdown("#### Strengths")
+        st.markdown("\n".join(f"- {x}" for x in v["strengths"]) or "- No metric in the top quartile of peers.")
+        st.markdown("#### Watch-outs")
+        st.markdown("\n".join(f"- {x}" for x in v["watch"]) or "- No metric in the bottom quartile of peers.")
+    st.markdown("#### Punchlist: investments, products, deals and moments that moved the stock")
+    ev_, ms_, k8_ = SC.punchlist(pick)
+    if len(ev_):
+        st.dataframe(ev_[["date", "category", "headline", "metric", "detail", "basis", "source_url"]], hide_index=True, width="stretch",
+                     column_config={"source_url": st.column_config.LinkColumn("Source")})
+    else:
+        st.caption("No researched evidence items yet for this company; filings and market events below.")
+    if len(ms_):
+        st.dataframe(ms_[["date", "category", "label", "detail", "confidence", "source_url"]], hide_index=True, width="stretch",
+                     column_config={"source_url": st.column_config.LinkColumn("Source")})
+    if len(k8_):
+        st.markdown("**Material 8-K filings (agreements, acquisitions, restructurings)**")
+        st.dataframe(k8_[["date", "labels", "url"]], hide_index=True, width="stretch",
+                     column_config={"url": st.column_config.LinkColumn("SEC filing")})
+    stamp("ctx")
+    st.caption("Evidence marked 'management-reported' reflects company statements on earnings calls and in releases; it is shown as "
+               "evidence of strategic intent and investment, not independently verified results.")
 
 # ---------------------------------------------------------------------------
 # Industry
@@ -797,6 +989,11 @@ with tabs[8]:
         "Event log (shocks, cat, macro, cyber, AI)": db.table("events"),
         "Market context facts": db.table("context_facts"),
         "Sub-industry company table": sub_ct,
+        f"{CUR_YEAR} year-to-date fundamentals (10-Q)": yt.reset_index(),
+        "Event study (abnormal returns)": es,
+        "Leader / laggard behaviours": beh.reset_index(),
+        "Company evidence (researched)": db.table("company_evidence"),
+        "Material 8-K filings": db.table("filings_8k"),
         "Fundamentals by carrier-year (derived)": ctx["fund_all"][["ticker", "name", "segment", "fiscal_year", "premiums_earned",
                                                                   "net_income", "tbv", "tbvps", "p_tbv", "rote_pct", "loss_ratio_pct",
                                                                   "aoci_to_tbv_pct", "tbvps_growth_pct", "premium_growth_pct"]],

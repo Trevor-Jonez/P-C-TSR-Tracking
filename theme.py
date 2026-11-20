@@ -63,7 +63,7 @@ CSS = f"""
 html, body, [class*="css"], .stMarkdown, .stText, .stDataFrame, button, input, select, textarea, label {{
   font-family: {FONT};
 }}
-.block-container {{ padding-top: 1rem; padding-bottom: 2rem; max-width: 1380px; }}
+.block-container {{ padding-top: 3.6rem; padding-bottom: 2rem; max-width: 1380px; }}
 h1, h2, h3, h4, h5 {{ color: {NAVY}; font-weight: 600; letter-spacing: -0.01em; }}
 h2 {{ font-size: 1.55rem; }}
 h4 {{ font-size: 1.05rem; margin-top: .6rem; }}
@@ -79,7 +79,7 @@ p, li {{ color: {INK}; }}
 /* Insight cards */
 .icard {{ background: {WHITE}; border: 1px solid {MID}; border-top: 4px solid var(--accent, {BLUE});
   border-radius: 3px; padding: .85rem 1rem .8rem; min-height: 262px; display: flex; flex-direction: column; gap: .4rem; }}
-.icard .row {{ display: flex; justify-content: space-between; align-items: center; gap: .5rem; }}
+.icard .row {{ display: flex; justify-content: space-between; align-items: center; gap: .4rem; flex-wrap: wrap; }}
 .chip {{ font-family: {MONO}; font-size: .7rem; letter-spacing: .06em; text-transform: uppercase;
   color: {NAVY}; background: {LIGHT}; padding: .12rem .45rem; border-radius: 2px; white-space: nowrap; }}
 .badge {{ font-family: {MONO}; font-size: .7rem; padding: .12rem .45rem; border-radius: 2px; white-space: nowrap; }}
@@ -142,6 +142,17 @@ p, li {{ color: {INK}; }}
 .tcard .t {{ font-weight: 650; color: {NAVY}; font-size: .98rem; line-height: 1.25; margin: .15rem 0 .3rem; }}
 .tcard .e {{ font-size: .82rem; color: {INK}; line-height: 1.4; }}
 .tcard .k {{ font-size: 1.25rem; font-weight: 700; color: var(--accent, {BLUE}); margin-top: .3rem; }}
+.persona {{ border: 1px solid {MID}; border-top: 4px solid {NAVY}; border-radius: 3px; padding: .9rem 1.1rem; background: {WHITE}; }}
+.persona h4 {{ margin: 0 0 .3rem; }}
+.persona .why {{ font-size: .92rem; color: {INK}; line-height: 1.5; margin-bottom: .5rem; }}
+.persona .lbl {{ font-family: {MONO}; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: {SLATE}; margin-top: .55rem; }}
+.persona ul {{ margin: .2rem 0 .1rem; padding-left: 1.1rem; }}
+.persona li {{ font-size: .88rem; color: {INK}; line-height: 1.45; margin-bottom: .15rem; }}
+.persona .lead li::marker {{ color: {BLUE}; }}
+.persona .lag li::marker {{ color: {RED}; }}
+.persona a {{ color: {SLATE}; font-size: .78rem; }}
+.dek {{ font-size: 1.12rem; color: {NAVY}; line-height: 1.5; max-width: 1000px; font-weight: 500; margin: -.2rem 0 .8rem; }}
+.pct {{ display: inline-block; min-width: 2.6rem; text-align: center; font-family: {MONO}; font-size: .75rem; padding: .05rem .35rem; border-radius: 2px; color: {WHITE}; }}
 .story p {{ font-size: 1.0rem; line-height: 1.6; color: {INK}; max-width: 980px; }}
 .story h3 {{ margin-top: 1.1rem; }}
 .pill {{ display: inline-block; font-family: {MONO}; font-size: .7rem; padding: .05rem .4rem; border-radius: 10px; background: {LIGHT}; color: {NAVY}; margin-right: .25rem; }}

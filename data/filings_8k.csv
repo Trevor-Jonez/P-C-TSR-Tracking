@@ -1,0 +1,554 @@
+ticker,date,items,labels,url
+PGR,2026-06-17,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/80661/000008066126000210/pgr-20260611.htm
+PGR,2026-05-12,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/80661/000008066126000200/pgr-20260508.htm
+PGR,2026-03-26,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/80661/000119312526125238/d47915d8k.htm
+PGR,2026-01-28,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/80661/000008066126000071/pgr-20260126.htm
+PGR,2025-03-10,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/80661/000008066125000010/pgr-20250307.htm
+PGR,2024-08-30,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/80661/000008066124000037/pgr-20240828.htm
+PGR,2024-08-23,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/80661/000008066124000035/pgr-20240820.htm
+PGR,2024-05-14,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/80661/000008066124000022/pgr-20240510.htm
+ALL,2026-07-14,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/899051/000089905126000109/all-20260714.htm
+ALL,2025-11-20,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/899051/000089905125000111/all-20251120.htm
+ALL,2025-10-01,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/899051/000089905125000083/all-20251001.htm
+ALL,2025-07-01,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/899051/000089905125000060/all-20250701.htm
+ALL,2025-04-01,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/899051/000089905125000022/all-20250401.htm
+ALL,2025-01-30,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/899051/000089905125000003/all-20250130.htm
+ALL,2024-08-13,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/899051/000089905124000058/all-20240813.htm
+ALL,2024-06-24,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/899051/000089905124000044/all-20240618.htm
+ALL,2024-05-15,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/899051/000089905124000027/all-20240513.htm
+MCY,2026-06-24,"1.01,1.02",Material agreement; Agreement terminated,https://www.sec.gov/Archives/edgar/data/64996/000119312526281118/d811201d8k.htm
+MCY,2026-06-12,"1.01,8.01",Material agreement; Other material event,https://www.sec.gov/Archives/edgar/data/64996/000119312526269392/d146636d8k.htm
+MCY,2026-06-09,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/64996/000119312526263041/d26636d8k.htm
+MCY,2024-11-26,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/64996/000006499624000029/mcy-20241122.htm
+KMPR,2026-07-21,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/860748/000086074826000075/kmpr-20260720.htm
+KMPR,2026-05-27,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/860748/000086074826000056/kmpr-20260521.htm
+KMPR,2026-05-06,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/860748/000086074826000041/kmpr-20260504.htm
+KMPR,2025-12-19,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/860748/000086074825000238/kmpr-20251216.htm
+KMPR,2025-11-10,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/860748/000086074825000225/kmpr-20251104.htm
+KMPR,2025-10-24,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/860748/000086074825000202/kmpr-20251020.htm
+KMPR,2025-10-15,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/860748/000086074825000198/kmpr-20251015.htm
+KMPR,2025-08-14,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/860748/000086074825000194/kmpr-20250813.htm
+KMPR,2025-08-05,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/860748/000086074825000187/kmpr-20250805.htm
+KMPR,2025-05-08,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/860748/000086074825000138/kmpr-20250507.htm
+KMPR,2024-05-02,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/860748/000086074824000142/kmpr-20240501.htm
+KMPR,2024-02-12,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/860748/000086074824000094/kmpr-20240212.htm
+KMPR,2024-02-07,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/860748/000086074824000048/kmpr-20240207.htm
+KMPR,2024-01-26,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/860748/000086074824000012/kmpr-20240125.htm
+HCI,2026-06-15,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1400810/000119312526271159/hci-20260611.htm
+HCI,2026-06-01,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1400810/000119312526249754/hci-20260601.htm
+HCI,2025-12-23,"1.01,5.02",Material agreement; Executive / board change,https://www.sec.gov/Archives/edgar/data/1400810/000119312525330946/hci-20251209.htm
+HCI,2025-12-19,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1400810/000119312525326799/hci-20251211.htm
+HCI,2025-07-24,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1400810/000095017025098366/hci-20250721.htm
+HCI,2025-06-02,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1400810/000095017025080273/hci-20250601.htm
+HCI,2025-04-10,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1400810/000095017025052872/hci-20250409.htm
+HCI,2024-12-30,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1400810/000095017024141164/hci-20241227.htm
+HCI,2024-12-19,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1400810/000095017024138498/hci-20241216.htm
+HCI,2024-06-17,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1400810/000095017024074293/hci-20240612.htm
+HCI,2024-05-30,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1400810/000095017024066263/hci-20240530.htm
+HCI,2024-04-23,"1.01,5.02",Material agreement; Executive / board change,https://www.sec.gov/Archives/edgar/data/1400810/000095017024046968/hci-20240417.htm
+HCI,2024-01-26,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1400810/000095017024007969/hci-20240122.htm
+HCI,2024-01-10,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1400810/000095017024003653/hci-20240105.htm
+UVE,2026-06-18,"1.01,8.01",Material agreement; Other material event,https://www.sec.gov/Archives/edgar/data/891166/000119312526275945/d137403d8k.htm
+UVE,2026-06-05,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/891166/000119312526259640/d124909d8k.htm
+UVE,2026-05-28,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/891166/000089116626000053/uve-20260528.htm
+UVE,2025-05-29,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/891166/000089116625000071/uve-20250529.htm
+UVE,2024-07-25,2.01,Acquisition / disposition completed,https://www.sec.gov/Archives/edgar/data/891166/000089116624000070/uve-20240725.htm
+UVE,2024-05-30,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/891166/000089116624000030/uve-20240530.htm
+UVE,2024-01-03,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/891166/000089116624000004/uve-20231229.htm
+TRV,2026-11-06,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/86312/000110465926123878/tm2622405d1_8k.htm
+TRV,2026-08-07,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/86312/000110465926092716/tm2622405d1_8k.htm
+TRV,2026-07-24,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/86312/000119312526316247/d659242d8k.htm
+TRV,2026-05-22,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/86312/000110465926065727/tm2614971d2_8k.htm
+TRV,2026-05-21,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/86312/000110465926065156/tm2614971d1_8k.htm
+TRV,2026-02-17,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/86312/000110465926016444/tm266524d1_8k.htm
+TRV,2026-02-06,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/86312/000110465926011530/tm265043d1_8k.htm
+TRV,2025-07-24,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/86312/000119312525164420/d88131d8k.htm
+TRV,2025-05-27,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/86312/000110465925053000/tm2515885d2_8k.htm
+TRV,2025-05-23,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/86312/000110465925052445/tm2515885d1_8k.htm
+THG,2026-07-15,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/944695/000119312526304948/d160982d8k.htm
+THG,2026-05-13,"5.02,8.01",Executive / board change; Other material event,https://www.sec.gov/Archives/edgar/data/944695/000119312526221636/thg-20260512.htm
+THG,2025-08-21,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/944695/000119312525185293/d938751d8k.htm
+THG,2025-04-03,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/944695/000095017025050122/thg-20250331.htm
+THG,2025-02-25,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/944695/000095017025026882/thg-20250225.htm
+THG,2024-08-14,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/944695/000095017024097004/thg-20240814.htm
+CB,2026-06-10,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/896159/000110465926072113/tm2617339d1_8k.htm
+CB,2026-05-22,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/896159/000110465926065709/tm2615328d1_8k.htm
+CB,2026-05-20,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/896159/000110465926064150/tm2615040d1_8k.htm
+CB,2025-11-04,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/896159/000110465925106021/tm2530130d1_8k.htm
+CB,2025-08-06,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/896159/000110465925074535/tm2522702d1_8k.htm
+CB,2024-08-12,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/896159/000110465924088369/tm2421427d1_8k.htm
+CB,2024-07-31,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/896159/000119312524189531/d867766d8k.htm
+CB,2024-07-09,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/896159/000110465924078453/tm2419088d1_8k.htm
+CB,2024-05-16,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/896159/000110465924062549/tm2414646d1_8k.htm
+CB,2024-03-15,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/896159/000110465924035000/tm248910d1_8k.htm
+CB,2024-03-07,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/896159/000119312524061525/d771387d8k.htm
+AIG,2026-11-03,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/5272/000000527226000101/aig-20261103.htm
+AIG,2026-09-24,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/5272/000110465926110438/tm2625844d1_8k.htm
+AIG,2026-09-16,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/5272/000000527226000091/aig-20260916.htm
+AIG,2026-09-02,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/5272/000000527226000088/aig-20260901.htm
+AIG,2026-08-06,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/5272/000000527226000072/aig-20260806.htm
+AIG,2026-05-14,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/5272/000000527226000066/aig-20260513.htm
+AIG,2026-04-30,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/5272/000000527226000048/aig-20260430.htm
+AIG,2026-04-27,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/5272/000000527226000042/aig-20260427.htm
+AIG,2026-03-16,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/5272/000000527226000032/aig-20260310.htm
+AIG,2026-02-10,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/5272/000000527226000014/aig-20260210.htm
+AIG,2026-01-06,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/5272/000000527226000006/aig-20260106.htm
+AIG,2025-11-21,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/5272/000000527225000169/aig-20251121.htm
+AIG,2025-11-14,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/5272/000000527225000166/aig-20251114.htm
+AIG,2025-11-04,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/5272/000000527225000156/aig-20251104.htm
+AIG,2025-10-03,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/5272/000000527225000142/aig-20251001.htm
+AIG,2025-08-18,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/5272/000000527225000098/aig-20250818.htm
+AIG,2025-08-06,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/5272/000000527225000077/aig-20250806.htm
+AIG,2025-07-21,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/5272/000000527225000068/aig-20250716.htm
+AIG,2025-06-09,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/5272/000000527225000063/aig-20250606.htm
+AIG,2025-06-02,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/5272/000000527225000060/aig-20250602.htm
+AIG,2025-05-15,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/5272/000000527225000053/aig-20250515.htm
+AIG,2025-05-07,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/5272/000110465925045555/tm2514272d1_8k.htm
+AIG,2025-05-01,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/5272/000000527225000036/aig-20250501.htm
+AIG,2025-03-31,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/5272/000000527225000017/aig-20250331.htm
+AIG,2025-02-20,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/5272/000000527225000014/aig-20250219.htm
+AIG,2025-02-11,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/5272/000000527225000004/aig-20250211.htm
+AIG,2024-12-13,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/5272/000000527224000140/aig-20241213.htm
+AIG,2024-12-06,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/5272/000000527224000138/aig-20241206.htm
+AIG,2024-11-27,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/5272/000110465924123741/tm2429645d1_8k.htm
+AIG,2024-11-08,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/5272/000000527224000133/aig-20241105.htm
+AIG,2024-11-04,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/5272/000000527224000121/aig-20241104.htm
+AIG,2024-10-21,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/5272/000000527224000116/aig-20241021.htm
+AIG,2024-09-27,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/5272/000000527224000105/aig-20240927.htm
+AIG,2024-09-18,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/5272/000000527224000101/aig-20240918.htm
+AIG,2024-09-03,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/5272/000000527224000095/aig-20240903.htm
+AIG,2024-07-31,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/5272/000000527224000075/aig-20240731.htm
+AIG,2024-06-13,2.01,Acquisition / disposition completed,https://www.sec.gov/Archives/edgar/data/5272/000000527224000063/aig-20240609.htm
+AIG,2024-06-10,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/5272/000000527224000058/aig-20240609.htm
+AIG,2024-05-16,"1.01,8.01",Material agreement; Other material event,https://www.sec.gov/Archives/edgar/data/5272/000110465924062171/tm2414457d1_8k.htm
+AIG,2024-05-01,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/5272/000000527224000047/aig-20240501.htm
+AIG,2024-04-22,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/5272/000000527224000040/aig-20240422.htm
+AIG,2024-02-13,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/5272/000000527224000017/aig-20240213.htm
+AIG,2024-02-07,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/5272/000000527224000011/aig-20240207.htm
+AIG,2024-02-01,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/5272/000000527224000007/aig-20240201.htm
+AIG,2024-01-31,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/5272/000000527224000004/aig-20240131.htm
+HIG,2026-09-30,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/874766/000087476626000067/hig-20260930.htm
+HIG,2026-09-25,1.02,Agreement terminated,https://www.sec.gov/Archives/edgar/data/874766/000087476626000064/hig-20260923.htm
+HIG,2026-08-11,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/874766/000087476626000062/hig-20260811.htm
+HIG,2026-07-15,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/874766/000087476626000050/hig-20260715.htm
+HIG,2026-06-03,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/874766/000087476626000043/hig-20260603.htm
+HIG,2025-09-25,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/874766/000087476625000094/hig-20250924.htm
+HIG,2025-06-10,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/874766/000087476625000058/hig-20250610.htm
+HIG,2025-03-31,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/874766/000087476625000027/hig-20250327.htm
+HIG,2025-01-10,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/874766/000087476625000004/hig-20250109.htm
+HIG,2025-01-06,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/874766/000087476625000002/hig-20250106.htm
+HIG,2024-09-06,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/874766/000087476624000110/hig-20240903.htm
+HIG,2024-06-04,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/874766/000087476624000084/hig-20240531.htm
+AFG,2026-11-04,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1042046/000119312526446243/d190021d8k.htm
+AFG,2026-02-18,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1042046/000114036126006031/ef20065940_8k.htm
+AFG,2026-02-04,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1042046/000119312526036749/d32393d8k.htm
+AFG,2025-12-05,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1042046/000114036125044459/ef20060710_8k.htm
+AFG,2025-11-05,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1042046/000119312525265722/d939869d8k.htm
+AFG,2025-09-23,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1042046/000114036125035826/ef20055919_8k.htm
+AFG,2025-05-23,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1042046/000114036125020332/ef20049629_8k.htm
+AFG,2025-02-28,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1042046/000114036125006485/ef20044670_8k.htm
+AFG,2025-02-20,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1042046/000114036125005197/ef20043981_8k.htm
+AFG,2024-11-15,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1042046/000114036124047068/ef20038746_8k.htm
+AFG,2024-11-06,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1042046/000119312524251685/d879693d8k.htm
+AFG,2024-05-24,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1042046/000114036124027426/ef20029917_8k.htm
+AFG,2024-02-28,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1042046/000114036124009919/ef20022627_8k.htm
+AFG,2024-02-07,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1042046/000119312524025964/d766797d8k.htm
+CINF,2026-09-28,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/20286/000002028626000052/cinf-20260925.htm
+CINF,2026-08-25,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/20286/000002028626000049/cinf-20260821.htm
+CINF,2026-06-22,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/20286/000002028626000038/cinf-20260619.htm
+CINF,2026-06-16,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/20286/000002028626000034/cinf-20260611.htm
+CINF,2026-01-30,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/20286/000002028626000003/cinf-20260130.htm
+CINF,2025-10-10,"1.01,1.02",Material agreement; Agreement terminated,https://www.sec.gov/Archives/edgar/data/20286/000002028625000053/cinf-20251010.htm
+CINF,2025-06-24,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/20286/000002028625000040/cinf-20250620.htm
+CINF,2025-01-31,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/20286/000002028625000002/cinf-20250130.htm
+CINF,2024-11-15,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/20286/000002028624000068/cinf-20241112.htm
+CINF,2024-09-13,1.02,Agreement terminated,https://www.sec.gov/Archives/edgar/data/20286/000002028624000055/cinf-20240912.htm
+CINF,2024-01-29,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/20286/000002028624000002/cinf-20240125.htm
+SIGI,2026-09-16,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/230557/000110465926108267/tm2625551d1_8k.htm
+SIGI,2026-05-14,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/230557/000110465926061133/tm2614641d1_8k.htm
+SIGI,2025-11-03,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/230557/000110465925105371/tm2529946d1_8k.htm
+SIGI,2025-10-22,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/230557/000023055725000022/sigi-20251022.htm
+SIGI,2025-07-30,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/230557/000110465925072210/tm2522127d1_8k.htm
+SIGI,2025-07-01,"1.01,1.02",Material agreement; Agreement terminated,https://www.sec.gov/Archives/edgar/data/230557/000110465925064709/tm2519506d1_8k.htm
+SIGI,2025-05-13,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/230557/000110465925047847/tm2514970d1_8k.htm
+SIGI,2025-02-25,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/230557/000110465925016922/tm257504d1_8k.htm
+SIGI,2024-09-23,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/230557/000110465924102054/tm2424539d1_8k.htm
+SIGI,2024-07-01,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/230557/000110465924076900/tm2418650d1_8k.htm
+SIGI,2024-05-03,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/230557/000023055724000014/sigi-20240501.htm
+CNA,2025-11-03,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/21175/000002117525000095/cna-20251028.htm
+CNA,2025-08-12,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/21175/000110465925076869/tm2522242d6_8k.htm
+CNA,2025-08-11,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/21175/000110465925076205/tm2522242d5_8k.htm
+CNA,2025-07-07,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/21175/000002117525000064/cna-20250703.htm
+CNA,2024-10-30,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/21175/000002117524000087/cna-20241030.htm
+CNA,2024-09-18,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/21175/000002117524000076/cna-20240918.htm
+CNA,2024-06-05,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/21175/000002117524000046/cna-20240605.htm
+CNA,2024-02-09,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/21175/000110465924012497/tm245051d5_8k.htm
+WRB,2026-06-26,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/11544/000001154426000030/wrb-20260626.htm
+WRB,2026-06-11,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/11544/000001154426000020/wrb-20260609.htm
+WRB,2026-06-10,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/11544/000001154426000016/wrb-20260609.htm
+WRB,2025-12-05,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/11544/000119312525308800/d53561d8k.htm
+WRB,2025-03-28,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/11544/000119312525066218/d934374d8k.htm
+ACGL,2026-11-05,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/947484/000094748426000159/acgl-20261105.htm
+ACGL,2026-10-30,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/947484/000094748426000138/acgl-20261028.htm
+ACGL,2026-10-29,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/947484/000094748426000132/acgl-20261026.htm
+ACGL,2026-06-16,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/947484/000094748426000114/acgl-20260615.htm
+ACGL,2026-06-09,"1.01,8.01",Material agreement; Other material event,https://www.sec.gov/Archives/edgar/data/947484/000094748426000111/acgl-20260609.htm
+ACGL,2026-06-03,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/947484/000094748426000094/acgl-20260603.htm
+ACGL,2026-06-03,"1.01,8.01",Material agreement; Other material event,https://www.sec.gov/Archives/edgar/data/947484/000094748426000090/acgl-20260602.htm
+ACGL,2026-06-02,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/947484/000094748426000075/acgl-20260602.htm
+ACGL,2026-05-07,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/947484/000094748426000063/acgl-20260505.htm
+ACGL,2026-04-20,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/947484/000094748426000044/acgl-20260419.htm
+ACGL,2026-02-26,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/947484/000094748426000019/acgl-20260226.htm
+ACGL,2026-01-22,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/947484/000094748426000004/acgl-20260115.htm
+ACGL,2025-11-07,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/947484/000094748425000089/acgl-20251107.htm
+ACGL,2025-11-03,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/947484/000094748425000081/acgl-20251029.htm
+ACGL,2025-09-05,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/947484/000094748425000071/acgl-20250904.htm
+ACGL,2025-05-08,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/947484/000094748425000052/acgl-20250507.htm
+ACGL,2025-02-27,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/947484/000094748425000019/acgl-20250226.htm
+ACGL,2025-02-06,"5.02,8.01",Executive / board change; Other material event,https://www.sec.gov/Archives/edgar/data/947484/000094748425000004/acgl-20250204.htm
+ACGL,2024-12-20,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/947484/000094748424000154/acgl-20241220.htm
+ACGL,2024-11-08,"5.02,8.01",Executive / board change; Other material event,https://www.sec.gov/Archives/edgar/data/947484/000094748424000148/acgl-20241107.htm
+ACGL,2024-11-04,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/947484/000094748424000135/acgl-20241030.htm
+ACGL,2024-10-15,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/947484/000094748424000123/acgl-20241011.htm
+ACGL,2024-09-11,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/947484/000094748424000118/acgl-20240905.htm
+ACGL,2024-08-27,"5.02,8.01",Executive / board change; Other material event,https://www.sec.gov/Archives/edgar/data/947484/000094748424000114/acgl-20240827.htm
+ACGL,2024-08-01,"1.01,2.01",Material agreement; Acquisition / disposition completed,https://www.sec.gov/Archives/edgar/data/947484/000094748424000099/acgl-20240801.htm
+ACGL,2024-05-13,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/947484/000094748424000077/acgl-20240509.htm
+ACGL,2024-04-05,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/947484/000094748424000055/acgl-20240405.htm
+ACGL,2024-03-28,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/947484/000094748424000033/acgl-20240328.htm
+ACGL,2024-02-23,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/947484/000094748424000022/acgl-20240223.htm
+AXS,2026-06-15,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1214816/000121481626000189/axs-20260615.htm
+AXS,2026-03-26,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1214816/000121481626000122/axs-20260324.htm
+AXS,2026-03-24,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1214816/000121481626000120/axs-20260323.htm
+AXS,2026-02-20,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1214816/000121481626000093/axs-20260217.htm
+AXS,2026-01-30,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1214816/000121481626000088/axs-20260127.htm
+AXS,2025-11-21,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1214816/000121481625000201/axs-20251119.htm
+AXS,2025-11-07,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1214816/000121481625000197/axs-20251103.htm
+AXS,2025-08-14,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1214816/000121481625000155/axs-20250808.htm
+AXS,2025-05-21,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1214816/000121481625000128/axs-20250515.htm
+AXS,2025-04-21,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1214816/000121481625000093/axs-20250416.htm
+AXS,2025-03-26,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1214816/000121481625000077/axs-20250323.htm
+AXS,2025-03-05,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1214816/000110465925020625/tm258303d1_8k.htm
+AXS,2025-02-03,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1214816/000110465925008417/tm255279d1_8k.htm
+AXS,2024-12-16,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1214816/000121481624000115/axs-20241213.htm
+AXS,2024-08-09,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1214816/000121481624000095/axs-20240806.htm
+AXS,2024-03-28,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1214816/000121481624000033/axs-20240326.htm
+AXS,2024-01-03,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1214816/000121481624000003/axs-20231229.htm
+MKL,2026-11-18,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1096343/000109634326000088/mkl-20261118.htm
+MKL,2026-10-28,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1096343/000109634326000082/mkl-20261027.htm
+MKL,2026-09-08,"5.02,8.01",Executive / board change; Other material event,https://www.sec.gov/Archives/edgar/data/1096343/000109634326000074/mkl-20260903.htm
+MKL,2026-02-26,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1096343/000109634326000018/mkl-20260221.htm
+MKL,2025-03-17,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1096343/000109634325000039/mkl-20250314.htm
+MKL,2025-03-17,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1096343/000109634325000038/mkl-20250314.htm
+MKL,2025-02-21,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1096343/000109634325000020/mkl-20250218.htm
+MKL,2025-02-06,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1096343/000109634325000009/mkl-20250205.htm
+MKL,2025-02-05,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1096343/000109634325000007/mkl-20250205.htm
+MKL,2024-11-13,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1096343/000109634324000127/mkl-20241113.htm
+MKL,2024-05-24,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1096343/000109634324000076/mkl-20240522.htm
+MKL,2024-05-16,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1096343/000109634324000066/mkl-20240513.htm
+MKL,2024-02-26,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1096343/000109634324000028/mkl-20240220.htm
+RLI,2026-11-12,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/84246/000110465926125506/rli-20261111x8k.htm
+RLI,2026-11-10,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/84246/000110465926125237/rli-20261109x8k.htm
+RLI,2026-08-13,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/84246/000110465926095914/rli-20260813x8k.htm
+RLI,2026-07-15,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/84246/000110465926083885/rli-20260715x8k.htm
+RLI,2026-06-25,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/84246/000110465926077770/rli-20260622x8k.htm
+RLI,2026-05-14,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/84246/000110465926060848/rli-20260514x8k.htm
+RLI,2026-03-03,"1.01,8.01",Material agreement; Other material event,https://www.sec.gov/Archives/edgar/data/84246/000110465926022871/rli-20260226x8k.htm
+RLI,2026-02-18,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/84246/000110465926017064/rli-20260218x8k.htm
+RLI,2025-11-13,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/84246/000008424625000023/rli-20251112x8k.htm
+RLI,2025-11-13,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/84246/000008424625000020/rli-20251113x8k.htm
+RLI,2025-08-14,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/84246/000155837025011567/rli-20250814x8k.htm
+RLI,2025-05-13,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/84246/000155837025007525/rli-20250513x8k.htm
+RLI,2025-02-13,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/84246/000155837025000947/rli-20250213x8k.htm
+RLI,2024-11-07,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/84246/000008424624000025/tmb-20241107x8k.htm
+RLI,2024-10-07,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/84246/000008424624000019/tmb-20241007x8k.htm
+RLI,2024-08-08,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/84246/000155837024011604/tmb-20240808x8k.htm
+RLI,2024-05-02,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/84246/000155837024006488/tmb-20240502x8k.htm
+RLI,2024-02-08,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/84246/000155837024000896/tmb-20240208x8k.htm
+KNSL,2026-10-22,"5.02,8.01",Executive / board change; Other material event,https://www.sec.gov/Archives/edgar/data/1669162/000166916226000051/knsl-20261019.htm
+KNSL,2026-05-05,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1669162/000166916226000031/knsl-20260429.htm
+KNSL,2026-04-29,"5.02,8.01",Executive / board change; Other material event,https://www.sec.gov/Archives/edgar/data/1669162/000166916226000029/knsl-20260429.htm
+KNSL,2026-02-04,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1669162/000166916226000007/knsl-20260130.htm
+KNSL,2026-01-05,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1669162/000166916226000002/knsl-20260101.htm
+KNSL,2025-12-11,"1.01,8.01",Material agreement; Other material event,https://www.sec.gov/Archives/edgar/data/1669162/000166916225000064/knsl-20251211.htm
+KNSL,2025-10-23,"5.02,8.01",Executive / board change; Other material event,https://www.sec.gov/Archives/edgar/data/1669162/000166916225000057/knsl-20251017.htm
+KNSL,2025-05-22,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1669162/000166916225000035/knsl-20250522.htm
+KNSL,2025-02-18,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1669162/000166916225000008/knsl-20250214.htm
+KNSL,2024-10-03,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1669162/000166916224000037/knsl-20241001.htm
+KNSL,2024-01-05,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1669162/000114036124000825/ef20017980_8k.htm
+SKWD,2026-08-20,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1519449/000151944926000056/skwd-20260820.htm
+SKWD,2026-07-15,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1519449/000151944926000044/skwd-20260715.htm
+SKWD,2026-02-26,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1519449/000151944926000009/skwd-20260226.htm
+SKWD,2026-01-06,"1.01,2.01",Material agreement; Acquisition / disposition completed,https://www.sec.gov/Archives/edgar/data/1519449/000151944926000002/skwd-20260106.htm
+SKWD,2025-11-18,"1.01,1.02",Material agreement; Agreement terminated,https://www.sec.gov/Archives/edgar/data/1519449/000151944925000066/skwd-20251118.htm
+SKWD,2025-11-12,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1519449/000151944925000063/skwd-20251112.htm
+SKWD,2025-09-08,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1519449/000151944925000050/skwd-20250908.htm
+SKWD,2025-05-13,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1519449/000151944925000026/skwd-20250513.htm
+SKWD,2025-02-05,"1.01,1.02",Material agreement; Agreement terminated,https://www.sec.gov/Archives/edgar/data/1519449/000151944925000003/skwd-20250205.htm
+SKWD,2024-10-29,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1519449/000151944924000041/skwd-20241029.htm
+SKWD,2024-09-09,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1519449/000151944924000039/skwd-20240906.htm
+SKWD,2024-05-07,"1.01,8.01",Material agreement; Other material event,https://www.sec.gov/Archives/edgar/data/1519449/000110465924057990/tm2413544d2_8k.htm
+BOW,2026-11-13,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/2002473/000162828026073860/bow-20261113.htm
+BOW,2026-09-14,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/2002473/000162828026061867/bow-20260912.htm
+BOW,2026-08-19,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/2002473/000162828026057976/bow-20260817.htm
+BOW,2026-08-03,"1.01,8.01",Material agreement; Other material event,https://www.sec.gov/Archives/edgar/data/2002473/000162828026051540/bow-20260802.htm
+BOW,2026-05-05,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/2002473/000162828026030113/bow-20260430.htm
+BOW,2025-12-01,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/2002473/000162828025054482/bow-20251126.htm
+BOW,2025-11-25,"1.01,1.02",Material agreement; Agreement terminated,https://www.sec.gov/Archives/edgar/data/2002473/000114036125043369/ef20059962_8k.htm
+BOW,2025-10-02,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/2002473/000162828025043707/bow-20251002.htm
+BOW,2025-08-08,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/2002473/000200247325000063/bow-20250808.htm
+BOW,2024-12-20,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/2002473/000200247324000018/bow-20241220.htm
+BOW,2024-10-30,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/2002473/000200247324000008/bow-20241025.htm
+PLMR,2026-08-04,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1761312/000119312526332846/plmr-20260804.htm
+PLMR,2026-05-29,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1761312/000119312526246399/plmr-20260529.htm
+PLMR,2026-05-26,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1761312/000119312526239334/plmr-20260521.htm
+PLMR,2026-05-06,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1761312/000119312526209013/plmr-20260506.htm
+PLMR,2026-02-02,"1.01,2.01",Material agreement; Acquisition / disposition completed,https://www.sec.gov/Archives/edgar/data/1761312/000119312526033708/plmr-20260202.htm
+PLMR,2025-10-30,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1761312/000119312525258571/plmr-20251027.htm
+PLMR,2025-08-04,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1761312/000095017025102007/plmr-20250804.htm
+PLMR,2025-05-29,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1761312/000143774925018799/plmr20250529_8k.htm
+PLMR,2024-12-30,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1761312/000143774924038523/plmr20241223_8k.htm
+PLMR,2024-08-09,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1761312/000143774924025921/plmr20240809_8k.htm
+PLMR,2024-06-20,"5.02,8.01",Executive / board change; Other material event,https://www.sec.gov/Archives/edgar/data/1761312/000143774924020787/plmr20240620c_8k.htm
+PLMR,2024-05-28,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1761312/000143774924018461/plmr20240528c_8k.htm
+PLMR,2024-03-01,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1761312/000143774924006222/plmr20240228_8k.htm
+PLMR,2024-01-26,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1761312/000143774924002287/plmr20240126_8k.htm
+RNR,2026-11-19,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/913144/000114036126044928/ef20085974_8k.htm
+RNR,2026-05-14,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/913144/000114036126021333/ef20073592_8k.htm
+RNR,2026-05-06,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/913144/000091314426000070/rnr-20260505.htm
+RNR,2025-12-22,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/913144/000091314425000099/rnr-20251222.htm
+RNR,2025-02-27,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/913144/000119312525039216/d855792d8k.htm
+RNR,2025-02-25,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/913144/000119312525035125/d922508d8k.htm
+RNR,2025-02-19,"1.01,8.01",Material agreement; Other material event,https://www.sec.gov/Archives/edgar/data/913144/000119312525029693/d932860d8k.htm
+RNR,2024-12-23,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/913144/000091314424000139/rnr-20241223.htm
+RNR,2024-11-07,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/913144/000091314424000118/rnr-20241106.htm
+RNR,2024-10-04,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/913144/000091314424000110/rnr-20241003.htm
+EG,2026-06-03,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1095073/000109507326000027/eg-20260603.htm
+EG,2026-05-15,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1095073/000109507326000023/everestre-20260513.htm
+EG,2026-03-23,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1095073/000109507326000014/everestre-20260322.htm
+EG,2026-03-16,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1095073/000109507326000009/everestre-20260313.htm
+EG,2025-12-02,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1095073/000109507325000091/everestre-20251125.htm
+EG,2025-11-20,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1095073/000109507325000088/everestre-20251117.htm
+EG,2025-10-28,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1095073/000109507325000082/everestre-20251026.htm
+EG,2025-10-27,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1095073/000109507325000079/everestre-20251026.htm
+EG,2025-10-16,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1095073/000109507325000074/everestre-20251016.htm
+EG,2025-09-24,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1095073/000109507325000072/everestre-20250918.htm
+EG,2025-08-20,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1095073/000109507325000068/everestre-20250819.htm
+EG,2025-06-23,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1095073/000109507325000053/everestre-20250623.htm
+EG,2025-05-20,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1095073/000109507325000049/everestre-20250515.htm
+EG,2025-03-24,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1095073/000109507325000025/everestre-20250324.htm
+EG,2025-03-06,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1095073/000109507325000022/everestre-20250306.htm
+EG,2025-03-04,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1095073/000109507325000020/everestre-20250226.htm
+EG,2025-01-22,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1095073/000109507325000006/everestre-20250122.htm
+EG,2025-01-14,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1095073/000109507325000004/everestre-20250113.htm
+EG,2025-01-08,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1095073/000109507325000002/everestre-20250103.htm
+EG,2024-12-03,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1095073/000109507324000051/everestre-20241202.htm
+EG,2024-11-07,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1095073/000109507324000048/everestre-20241107.htm
+EG,2024-03-28,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1095073/000109507324000012/everestre-20240324.htm
+SPNT,2026-11-05,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1576018/000157601826000101/tpre-20261105.htm
+SPNT,2026-11-03,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1576018/000157601826000092/tpre-20261103.htm
+SPNT,2026-03-23,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1576018/000157601826000041/tpre-20260323.htm
+SPNT,2026-03-16,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1576018/000157601826000036/tpre-20260316.htm
+SPNT,2026-02-12,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1576018/000157601826000012/tpre-20260212.htm
+SPNT,2026-01-30,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1576018/000157601826000007/tpre-20260130.htm
+SPNT,2026-01-29,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1576018/000119312526029688/d100799d8k.htm
+SPNT,2025-11-03,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1576018/000119312525261760/d34430d8k.htm
+SPNT,2025-10-30,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1576018/000157601825000043/tpre-20251030.htm
+SPNT,2025-10-15,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1576018/000119312525240307/d21454d8k.htm
+SPNT,2025-10-06,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1576018/000119312525230845/d68415d8k.htm
+SPNT,2025-09-29,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1576018/000119312525223398/d14461d8k.htm
+SPNT,2025-09-03,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1576018/000119312525194997/d266090d8k.htm
+SPNT,2025-08-05,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1576018/000119312525173569/d19408d8k.htm
+SPNT,2025-08-04,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1576018/000157601825000031/tpre-20250804.htm
+SPNT,2025-05-05,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1576018/000157601825000018/tpre-20250501.htm
+SPNT,2025-02-27,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1576018/000119312525039270/d933901d8k.htm
+SPNT,2025-01-29,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1576018/000119312525015690/d926668d8k.htm
+SPNT,2024-12-30,"1.01,5.02,8.01",Material agreement; Executive / board change; Other material event,https://www.sec.gov/Archives/edgar/data/1576018/000119312524286894/d906294d8k.htm
+SPNT,2024-12-23,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1576018/000119312524283532/d905414d8k.htm
+SPNT,2024-11-01,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1576018/000119312524249918/d863160d8k.htm
+SPNT,2024-10-31,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1576018/000157601824000053/tpre-20241031.htm
+SPNT,2024-08-01,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1576018/000157601824000041/tpre-20240801.htm
+SPNT,2024-05-28,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1576018/000119312524148130/d708506d8k.htm
+SPNT,2024-05-23,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1576018/000119312524146056/d826023d8k.htm
+SPNT,2024-04-30,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1576018/000157601824000028/tpre-20240430.htm
+SPNT,2024-04-05,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1576018/000114036124018346/ny20024750x5_8k.htm
+SPNT,2024-03-28,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1576018/000114036124015898/ny20024750x3_8k.htm
+SPNT,2024-02-09,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1576018/000119312524030042/d736991d8k.htm
+SPNT,2024-02-05,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1576018/000157601824000005/tpre-20240201.htm
+HG,2026-10-27,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1593275/000159327526000111/hg-20261026.htm
+HG,2026-08-06,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1593275/000159327526000094/hg-20260806.htm
+HG,2026-05-06,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1593275/000159327526000065/hg-20260506.htm
+HG,2026-04-02,"1.01,1.02",Material agreement; Agreement terminated,https://www.sec.gov/Archives/edgar/data/1593275/000159327526000046/hg-20260402.htm
+HG,2026-02-25,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1593275/000159327526000022/hg-20260220.htm
+HG,2026-02-19,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1593275/000159327526000007/hg-20260219.htm
+HG,2025-11-04,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1593275/000159327525000268/hg-20251104.htm
+HG,2025-10-24,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1593275/000159327525000251/hg-20251020.htm
+HG,2025-06-17,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1593275/000159327525000211/hg-20250617.htm
+HG,2025-06-10,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1593275/000159327525000206/hg-20250610.htm
+HG,2025-05-19,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1593275/000159327525000169/hg-20250519.htm
+HG,2024-10-29,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1593275/000159327524000099/hg-20241029.htm
+HG,2024-10-10,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1593275/000159327524000094/hg-20241010.htm
+HG,2024-08-12,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1593275/000159327524000091/hg-20240812.htm
+HG,2024-08-07,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1593275/000159327524000085/hg-20240807.htm
+HG,2024-05-31,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1593275/000159327524000064/hg-20240531.htm
+HG,2024-05-08,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1593275/000159327524000054/hg-20240508.htm
+HG,2024-03-06,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1593275/000159327524000023/hg-20240306.htm
+MRSH,2026-10-27,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/62709/000119312526434167/d170705d8k.htm
+MRSH,2026-06-04,"1.01,1.02",Material agreement; Agreement terminated,https://www.sec.gov/Archives/edgar/data/62709/000006270926000167/mmc-20260602.htm
+MRSH,2026-04-14,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/62709/000095010326005674/dp245126_8k.htm
+MRSH,2026-03-10,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/62709/000006270926000071/asouthappointment03102026.htm
+MRSH,2026-02-25,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/62709/000006270926000035/adirectorappointment022520.htm
+MRSH,2026-02-19,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/62709/000119312526059544/d112193d8k.htm
+MRSH,2025-07-09,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/62709/000006270925000057/mmc-20250709.htm
+MRSH,2024-11-15,"1.02,2.01,8.01",Agreement terminated; Acquisition / disposition completed; Other material event,https://www.sec.gov/Archives/edgar/data/62709/000006270924000098/mmc-20241115.htm
+MRSH,2024-11-08,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/62709/000119312524254168/d862477d8k.htm
+MRSH,2024-09-30,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/62709/000006270924000079/mmc-20240929.htm
+MRSH,2024-07-10,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/62709/000006270924000060/mmc-20240710.htm
+MRSH,2024-03-14,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/62709/000006270924000024/mmc-20240308.htm
+MRSH,2024-02-23,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/62709/000006270924000021/mmc-20240222.htm
+MRSH,2024-02-20,"1.01,8.01",Material agreement; Other material event,https://www.sec.gov/Archives/edgar/data/62709/000119312524039967/d642841d8k.htm
+MRSH,2024-02-09,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/62709/000006270924000012/mmc-20240205.htm
+AON,2026-11-16,"2.01,5.02",Acquisition / disposition completed; Executive / board change,https://www.sec.gov/Archives/edgar/data/315293/000119312526463733/d181018d8k.htm
+AON,2026-09-22,"1.01,1.02",Material agreement; Agreement terminated,https://www.sec.gov/Archives/edgar/data/315293/000119312526397203/d38875d8k.htm
+AON,2026-09-17,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/315293/000119312526394533/d105587d8k.htm
+AON,2026-09-11,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/315293/000119312526388699/d67980d8k.htm
+AON,2026-08-31,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/315293/000119312526375328/d108801d8k.htm
+AON,2026-08-17,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/315293/000119312526354083/d376816d8k.htm
+AON,2026-07-01,"5.02,8.01",Executive / board change; Other material event,https://www.sec.gov/Archives/edgar/data/315293/000119312526292736/d76205d8k.htm
+AON,2026-01-07,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/315293/000119312526005392/d816540d8k.htm
+AON,2026-01-02,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/315293/000119312526000263/d44673d8k.htm
+AON,2025-08-04,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/315293/000119312525172652/d18812d8k.htm
+AON,2025-07-29,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/315293/000119312525168037/d134233d8k.htm
+AON,2025-07-03,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/315293/000119312525155525/d17498d8k.htm
+AON,2025-04-10,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/315293/000119312525078036/d943570d8k.htm
+AON,2025-03-17,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/315293/000119312525055237/d903628d8k.htm
+AON,2025-03-13,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/315293/000119312525053530/d892037d8k.htm
+AON,2024-08-09,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/315293/000119312524197550/d702049d8k.htm
+AON,2024-06-26,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/315293/000119312524169166/d829771d8k.htm
+AON,2024-06-04,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/315293/000119312524153665/d836091d8k.htm
+AON,2024-04-19,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/315293/000095015724000633/form8-k.htm
+AON,2024-04-03,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/315293/000119312524085517/d784596d8k.htm
+AON,2024-03-27,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/315293/000119312524078845/d810504d8k.htm
+AON,2024-03-01,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/315293/000119312524056156/d794687d8k.htm
+AON,2024-02-16,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/315293/000119312524038533/d665291d8k.htm
+AON,2024-01-25,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/315293/000119312524015448/d683229d8k.htm
+AJG,2026-08-27,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/354190/000035419026000197/ajg-20260824.htm
+AJG,2026-07-29,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/354190/000035419026000184/ajg-20260722.htm
+AJG,2026-03-12,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/354190/000035419026000069/ajg-20260306.htm
+AJG,2025-08-18,2.01,Acquisition / disposition completed,https://www.sec.gov/Archives/edgar/data/354190/000035419025000019/ajg-20250818.htm
+AJG,2025-04-04,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/354190/000119312525073495/d813689d8k.htm
+AJG,2024-12-19,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/354190/000119312524282109/d882725d8k.htm
+AJG,2024-12-11,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/354190/000119312524275765/d904143d8k.htm
+AJG,2024-12-09,"1.01,8.01",Material agreement; Other material event,https://www.sec.gov/Archives/edgar/data/354190/000119312524272811/d885381d8k.htm
+AJG,2024-07-25,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/354190/000119312524184856/d841953d8k.htm
+AJG,2024-03-14,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/354190/000119312524067927/d794926d8k.htm
+AJG,2024-02-15,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/354190/000119312524037550/d788888d8k.htm
+WTW,2026-11-03,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1140536/000119312526445385/d227851d8k.htm
+WTW,2026-01-09,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1140536/000119312526009009/d80722d8k.htm
+WTW,2025-12-22,"1.01,8.01",Material agreement; Other material event,https://www.sec.gov/Archives/edgar/data/1140536/000119312525328864/d62193d8k.htm
+WTW,2025-12-16,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1140536/000119312525321190/d15891d8k.htm
+WTW,2025-10-20,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1140536/000119312525243617/d35058d8k.htm
+WTW,2025-05-20,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1140536/000119312525123217/d94652d8k.htm
+WTW,2025-03-03,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1140536/000119312525043776/d867965d8k.htm
+WTW,2025-01-02,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1140536/000119312525000182/d916164d8k.htm
+WTW,2024-10-01,"2.06,8.01",Material impairment; Other material event,https://www.sec.gov/Archives/edgar/data/1140536/000119312524229588/d857360d8k.htm
+WTW,2024-03-05,"1.01,8.01",Material agreement; Other material event,https://www.sec.gov/Archives/edgar/data/1140536/000119312524059380/d790296d8k.htm
+WTW,2024-02-28,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1140536/000119312524050975/d759692d8k.htm
+BRO,2026-10-22,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/79282/000119312526429079/bro-20261021.htm
+BRO,2026-08-10,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/79282/000119312526341162/bro-20260810.htm
+BRO,2026-06-05,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/79282/000119312526259864/bro-20260605.htm
+BRO,2026-05-07,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/79282/000119312526212338/bro-20260506.htm
+BRO,2026-03-04,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/79282/000119312526091840/bro-20260226.htm
+BRO,2025-10-20,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/79282/000119312525242954/bro-20251017.htm
+BRO,2025-08-15,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/79282/000095017025109448/bro-20250813.htm
+BRO,2025-08-05,2.01,Acquisition / disposition completed,https://www.sec.gov/Archives/edgar/data/79282/000095017025102316/bro-20250801.htm
+BRO,2025-06-23,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/79282/000119312525144719/d933338d8k.htm
+BRO,2025-06-13,"1.01,8.01",Material agreement; Other material event,https://www.sec.gov/Archives/edgar/data/79282/000119312525140840/d943957d8k.htm
+BRO,2025-06-10,"1.01,8.01",Material agreement; Other material event,https://www.sec.gov/Archives/edgar/data/79282/000119312525138153/d32630d8k.htm
+BRO,2025-05-12,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/79282/000095017025069437/bro-20250507.htm
+BRO,2025-02-25,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/79282/000095017025026811/bro-20250223.htm
+BRO,2025-01-22,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/79282/000095017025007843/bro-20250121.htm
+BRO,2024-08-12,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/79282/000095017024095047/bro-20240809.htm
+BRO,2024-06-11,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/79282/000119312524159210/d750800d8k.htm
+BRO,2024-06-05,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/79282/000119312524155242/d630650d8k.htm
+BRO,2024-04-11,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/79282/000095017024043521/bro-20240409.htm
+BRO,2024-02-21,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/79282/000095017024017479/bro-20240219.htm
+BRO,2024-01-17,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/79282/000095017024005075/bro-20240112.htm
+BWIN,2026-09-21,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1781755/000178175526000053/bwin-20260921.htm
+BWIN,2026-09-14,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1781755/000095010326013874/dp253297_8k.htm
+BWIN,2026-06-04,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1781755/000178175526000042/bwin-20260604.htm
+BWIN,2026-01-02,"1.01,2.01,5.02",Material agreement; Acquisition / disposition completed; Executive / board change,https://www.sec.gov/Archives/edgar/data/1781755/000178175526000004/bwin-20260101.htm
+BWIN,2025-12-02,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1781755/000178175525000114/bwin-20251202.htm
+BWIN,2025-09-18,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1781755/000119312525207391/d71891d8k.htm
+BWIN,2025-01-10,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1781755/000095010325000389/dp223332_8k.htm
+BWIN,2024-10-31,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1781755/000178175524000086/bwin-20241030.htm
+BWIN,2024-05-29,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1781755/000119312524149333/d823548d8k.htm
+BWIN,2024-01-24,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1781755/000178175524000004/brp-20240118.htm
+RYAN,2026-10-29,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1849253/000184925326000045/ryan-20261029.htm
+RYAN,2026-08-07,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1849253/000184925326000040/ryan-20260804.htm
+RYAN,2026-07-30,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1849253/000184925326000034/ryan-20260730.htm
+RYAN,2026-04-30,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1849253/000184925326000023/ryan-20260430.htm
+RYAN,2026-04-30,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1849253/000184925326000022/ryan-20260430.htm
+RYAN,2026-02-12,"2.05,8.01",Restructuring / exit costs; Other material event,https://www.sec.gov/Archives/edgar/data/1849253/000184925326000004/ryan-20260212.htm
+RYAN,2026-02-12,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1849253/000162828026007479/ryan-20260210.htm
+RYAN,2025-12-08,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1849253/000184925325000018/ryan-20251205.htm
+RYAN,2025-10-30,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1849253/000184925325000013/ryan-20251030.htm
+RYAN,2025-10-08,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1849253/000184925325000008/ryan-20251002.htm
+RYAN,2025-09-09,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1849253/000184925325000004/ryan-20250903.htm
+RYAN,2025-07-31,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1849253/000162828025036997/ryan-20250731.htm
+RYAN,2025-07-17,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1849253/000162828025035218/ryan-20250717.htm
+RYAN,2025-05-01,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1849253/000162828025021523/ryan-20250501.htm
+RYAN,2025-03-27,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1849253/000162828025015192/ryan-20250327.htm
+RYAN,2025-02-20,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1849253/000162828025006736/ryan-20250220.htm
+RYAN,2024-12-09,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1849253/000119312524273411/d896518d8k.htm
+RYAN,2024-12-02,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1849253/000119312524269037/d118703d8k.htm
+RYAN,2024-10-30,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1849253/000162828024044311/ryan-20241030.htm
+RYAN,2024-09-19,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1849253/000095017024108156/ryan-20240913.htm
+RYAN,2024-09-05,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1849253/000119312524214267/d889451d8k.htm
+RYAN,2024-09-03,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1849253/000095017024102557/ryan-20240830.htm
+RYAN,2024-08-01,"1.01,8.01",Material agreement; Other material event,https://www.sec.gov/Archives/edgar/data/1849253/000095017024089273/ryan-20240730.htm
+RYAN,2024-08-01,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1849253/000095017024089264/ryan-20240630.htm
+RYAN,2024-07-01,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1849253/000095017024079273/ryan-20240627.htm
+RYAN,2024-05-02,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1849253/000095017024052148/ryan-20240331.htm
+RYAN,2024-02-27,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1849253/000095017024021174/ryan-20231231.htm
+RYAN,2024-01-19,"1.01,8.01",Material agreement; Other material event,https://www.sec.gov/Archives/edgar/data/1849253/000095017024005584/ryan-20240119.htm
+RYAN,2024-01-02,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1849253/000095017024000331/ryan-20231228.htm
+ARX,2026-09-23,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1997350/000199735026000018/arx-20260923.htm
+ARX,2026-08-14,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1997350/000119312526349973/d147575d8k.htm
+ARX,2026-08-13,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1997350/000119312526347925/d286225d8k.htm
+ARX,2026-03-18,"5.02,8.01",Executive / board change; Other material event,https://www.sec.gov/Archives/edgar/data/1997350/000119312526113962/d80009d8k.htm
+ARX,2026-02-27,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1997350/000162828026012812/arx-20260227.htm
+NP,2026-10-20,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/2067129/000162828026066494/np-20261020.htm
+NP,2026-10-01,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/2067129/000162828026064028/np-20260930.htm
+NP,2026-04-22,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/2067129/000162828026026558/np-20260422.htm
+HGTY,2026-11-12,"1.01,8.01",Material agreement; Other material event,https://www.sec.gov/Archives/edgar/data/1840776/000119312526458570/d151794d8k.htm
+HGTY,2026-09-11,"1.01,8.01",Material agreement; Other material event,https://www.sec.gov/Archives/edgar/data/1840776/000119312526389275/d71458d8k.htm
+HGTY,2026-07-17,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1840776/000162828026048668/hgty-20260715.htm
+HGTY,2026-04-15,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1840776/000162828026025284/hgty-20260413.htm
+HGTY,2026-01-02,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1840776/000184077626000003/hgty-20251231.htm
+HGTY,2025-08-11,"1.01,8.01",Material agreement; Other material event,https://www.sec.gov/Archives/edgar/data/1840776/000119312525177927/d20206d8k.htm
+HGTY,2025-07-24,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1840776/000184077625000209/hgty-20250724.htm
+HGTY,2025-04-16,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1840776/000184077625000118/hgty-20250416.htm
+HGTY,2025-03-10,"1.01,1.02",Material agreement; Agreement terminated,https://www.sec.gov/Archives/edgar/data/1840776/000184077625000041/hgty-20250307.htm
+HGTY,2024-09-06,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1840776/000184077624000198/hgty-20240901.htm
+HGTY,2024-07-26,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1840776/000162828024033053/hgty-20240725.htm
+HGTY,2024-07-09,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1840776/000184077624000150/hgty-20240709.htm
+HGTY,2024-07-05,"1.01,8.01",Material agreement; Other material event,https://www.sec.gov/Archives/edgar/data/1840776/000162828024031296/hgty-20240703.htm
+HGTY,2024-06-03,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1840776/000162828024026320/hgty-20240603.htm
+HGTY,2024-05-31,"1.01,5.02",Material agreement; Executive / board change,https://www.sec.gov/Archives/edgar/data/1840776/000184077624000114/hgty-20240529.htm
+HGTY,2024-04-01,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1840776/000184077624000032/hgty-20240329.htm
+HGTY,2024-03-01,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1840776/000184077624000010/hgty-20240226.htm
+HGTY,2024-02-13,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1840776/000184077624000007/hgty-20240112.htm
+ROOT,2026-09-01,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1788882/000178888226000068/root-20260831.htm
+ROOT,2026-05-06,"1.01,1.02",Material agreement; Agreement terminated,https://www.sec.gov/Archives/edgar/data/1788882/000178888226000046/root-20260504.htm
+ROOT,2024-11-15,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1788882/000162828024048094/root-20241113.htm
+ROOT,2024-04-16,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1788882/000162828024016427/root-20240415.htm
+LMND,2026-07-29,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1691421/000169142126000050/lmnd-20260727.htm
+LMND,2026-06-24,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1691421/000169142126000041/lmnd-20260622.htm
+LMND,2026-01-27,8.01,Other material event,https://www.sec.gov/Archives/edgar/data/1691421/000169142126000003/lmnd-20260127.htm
+LMND,2025-10-15,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1691421/000169142125000142/lmnd-20251015.htm
+LMND,2025-10-06,5.02,Executive / board change,https://www.sec.gov/Archives/edgar/data/1691421/000169142125000138/lmnd-20251006.htm
+LMND,2025-07-02,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1691421/000169142125000108/lmnd-20250630.htm
+LMND,2025-04-09,"1.02,8.01",Agreement terminated; Other material event,https://www.sec.gov/Archives/edgar/data/1691421/000169142125000053/lmnd-20250404.htm
+LMND,2025-02-07,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1691421/000169142125000010/lmnd-20250203.htm
+LMND,2024-01-11,1.01,Material agreement,https://www.sec.gov/Archives/edgar/data/1691421/000169142124000006/lmnd-20240108.htm

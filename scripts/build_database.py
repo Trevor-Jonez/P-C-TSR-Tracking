@@ -516,6 +516,12 @@ def main() -> None:
     ev = pd.read_csv(DATA / "context" / "events.csv").fillna("")
     ev["retrieved_at"] = NOW
     ev.to_sql("events", con, if_exists="replace", index=False)
+    ce = pd.read_csv(DATA / "context" / "company_evidence.csv").fillna("")
+    ce["retrieved_at"] = NOW
+    ce.to_sql("company_evidence", con, if_exists="replace", index=False)
+    for fname, table in [("fundamentals_ytd.csv", "fundamentals_ytd"), ("filings_8k.csv", "filings_8k")]:
+        if (DATA / fname).exists():
+            pd.read_csv(DATA / fname).to_sql(table, con, if_exists="replace", index=False)
     cf = pd.read_csv(DATA / "context" / "context_facts.csv").fillna("")
     cf["retrieved_at"] = NOW
     cf.to_sql("context_facts", con, if_exists="replace", index=False)
@@ -525,7 +531,7 @@ def main() -> None:
     log = [("decks", f"{len(sources)} presentations, {len(raw)} chart points, {len(obs)} observations"),
            ("fred", f"{fred_cat['status'].eq('ok').sum()}/{len(fred_cat)} series"),
            ("reconciliation", rec["status"].value_counts().to_dict().__repr__() if len(rec) else "none"),
-           ("context", f"{len(ev)} dated events, {len(cf)} sourced market facts"),
+           ("context", f"{len(ev)} dated events, {len(cf)} sourced market facts, {len(ce)} company evidence items"),
            ("universe", f"{len(UNIVERSE)} listed companies")]
     con.executemany("INSERT INTO build_log VALUES (?,?,?)", [(NOW, k, v) for k, v in log])
     con.commit()
