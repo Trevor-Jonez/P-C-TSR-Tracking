@@ -1,32 +1,38 @@
-# US P&C Value Creators: Live TSR Tracker
+# US P&C Value Signals
 
-An interactive Streamlit dashboard that rebuilds BCG's 2026 Insurance Value Creators report,
-[*Softer Rates and Bigger Risks Are Reshaping the US P&C Market*](https://www.bcg.com/publications/2026/soft-rates-and-big-risks-reshape-the-us-p-and-c-market)
-(June 25, 2026), as explorable data and checks its findings against live market returns.
+A Streamlit dashboard that tracks value creation across 18 US property & casualty insurers and
+surfaces statistically tested market signals, built entirely from primary data:
+
+- **SEC EDGAR XBRL** (10-K filings): equity, goodwill, intangibles, AOCI, net income, earned premium,
+  losses incurred, share counts
+- **Yahoo Finance**: daily prices and dividend-adjusted total returns
 
 ![Dashboard preview](docs/preview.png)
 
-## Storyline
+## What's inside
 
-| Tab | What it shows |
+| Section | What it shows |
 |---|---|
-| 01 · TSR performance | Exhibit 1 TSR decomposition (US P&C 18% vs global 15%); live trailing 5-yr TSR vs the 18% benchmark; total-return index annotated with storyline events |
-| 02 · Underwriting divide | Exhibit 2 RoTE waterfalls; Exhibit 3 company RoTE vs TSR and TSR building blocks; BCG-reported vs live-replicated 2021–25 TSR; 2026 YTD check |
-| 03 · Subsegments | Exhibit 4 personal vs commercial decomposition and shift vs 2020–24; Exhibit 5 top/bottom-quartile spread |
-| 04 · Personal lines | Auto and homeowners combined ratios, SCS cat losses, auto and homeowners strategic considerations |
-| 05 · Structural risks | Nuclear verdicts, litigation funding, $62B adverse development, implications for carriers |
-| Live tracker | Live TSR across four windows, upcoming data releases |
-| Data explorer | Every dataset, filterable, chartable and downloadable as CSV |
+| **Insight deck** | Three cards drawn from every finding that passes a significance test (p < 0.10). Each states the statistic, test, sample size and source, and expands to its evidence chart and data. **Shuffle** deals a new set weighted by statistical strength. |
+| Market signals | Cumulative excess return vs the S&P 500 with beta-adjusted shock days, change-point test, rolling beta, segment total returns, shock-day log |
+| Value drivers | TSR split into TBV/share growth, P/TBV re-rating and cash yield; which driver explains the ranking; outliers and leave-one-out influence |
+| Fundamentals | Year-by-year distributions (TBV growth, AOCI, RoTE, P/TBV) with significance stars; loss-ratio heatmap |
+| Year by year | Each fiscal year named only from statistically significant shifts, plus a signal matrix |
+| Data & methods | Every dataset, filterable and downloadable, with full methodology |
 
-## Data
+Sidebar settings (exclude statistical outliers, shock threshold, segments) recompute every test, chart and card.
 
-All report figures live in [`data/`](data) as tidy CSVs, transcribed from the report's exhibits and text:
+## Refreshing the data
 
-- `exhibit1_tsr_decomposition.csv` … `exhibit5_tsr_spread.csv`: one file per exhibit
-- `market_indicators.csv`: every other statistic cited in the report, with its original source
+```bash
+SEC_USER_AGENT="Your Name you@example.com" python scripts/build_fundamentals.py
+```
 
-Live prices come from Yahoo Finance (dividend-adjusted, cached for one hour). See the
-methodology notes in the Data explorer tab for caveats.
+```bash
+python scripts/build_prices.py
+```
+
+The app pulls live prices on load and falls back to the committed snapshot if Yahoo is unavailable.
 
 ## Run locally
 
@@ -38,9 +44,7 @@ streamlit run app.py
 ## Deploy (Streamlit Community Cloud)
 
 1. Sign in at https://share.streamlit.io with GitHub.
-2. **Create app** → choose this repo, branch `main`, main file `app.py` → **Deploy**.
-
-Every push to `main` redeploys automatically.
+2. **Create app** → this repo, branch `main`, main file `app.py` → **Deploy**.
 
 ---
-Independent analysis. BCG content © 2026 Boston Consulting Group, cited for analysis and commentary. Not investment advice.
+Independent analysis. Not investment advice.
