@@ -39,7 +39,7 @@ SUB_COLORS = {"Carrier": T.NAVY, "Reinsurer": T.MAGENTA, "Retail broker": T.BLUE
 # Data
 # ---------------------------------------------------------------------------
 @st.cache_data(ttl=3600, show_spinner="Loading live prices…")
-def load_prices() -> tuple[pd.DataFrame, pd.DataFrame, str]:
+def load_prices(dbv: str = "") -> tuple[pd.DataFrame, pd.DataFrame, str]:
     try:
         raw = yf.download(PX_TICKERS, start="2019-12-31", auto_adjust=False, progress=False, threads=False)
         tr, cl = raw["Adj Close"], raw["Close"]
@@ -51,20 +51,31 @@ def load_prices() -> tuple[pd.DataFrame, pd.DataFrame, str]:
         return tr, cl, "snapshot"
 
 
+def db_version() -> str:
+    """Build timestamp of data/pc_market.db: every cache below is keyed on it, so a new database never meets stale cache."""
+    try:
+        return str(db.q("SELECT built_at FROM build_log LIMIT 1")["built_at"].iloc[0])
+    except Exception:  # noqa: BLE001
+        return str((DATA / "pc_market.db").stat().st_mtime)
+
+
+DBV = db_version()
+
+
 @st.cache_data
-def load_static() -> tuple[pd.DataFrame, pd.DataFrame]:
+def load_static(dbv: str = DBV) -> tuple[pd.DataFrame, pd.DataFrame]:
     return db.fundamentals_raw(), db.splits()
 
 
 @st.cache_resource(ttl=3600, show_spinner="Testing industry series…")
-def industry_build():
+def industry_build(dbv: str = DBV):
     return IND.build({})
 
 
 @st.cache_data(ttl=3600, show_spinner="Running statistical tests…")
-def compute(active: tuple[str, ...], z_cut: float, px_tag: str):
-    tr, cl, _ = load_prices()
-    raw, splits = load_static()
+def compute(active: tuple[str, ...], z_cut: float, px_tag: str, dbv: str = DBV):
+    tr, cl, _ = load_prices(DBV)
+    raw, splits = load_static(DBV)
     fund = A.build_fundamentals(raw[raw["ticker"].isin(ALL_TICKERS)], cl, splits)
     cover = fund.groupby("fiscal_year")["equity"].apply(lambda s: s.notna().mean())
     y1 = int(cover[cover >= 0.8].index.max())
@@ -85,9 +96,9 @@ def compute(active: tuple[str, ...], z_cut: float, px_tag: str):
 
 
 @st.cache_data(ttl=3600, show_spinner="Reading 10-Q filings…")
-def cur_build(px_tag: str):
-    tr, cl, _ = load_prices()
-    raw, splits = load_static()
+def cur_build(px_tag: str, dbv: str = DBV):
+    tr, cl, _ = load_prices(DBV)
+    raw, splits = load_static(DBV)
     fund = A.build_fundamentals(raw, cl, splits)
     yt = CU.ytd_table(tr, cl, fund)
     T_ = CU.tests(yt, tr, fund)
@@ -96,13 +107,13 @@ def cur_build(px_tag: str):
 
 
 @st.cache_data(ttl=3600)
-def sub_build(px_tag: str):
-    tr, cl, _ = load_prices()
-    ct = SB.company_table(tr, cl, load_static()[0])
+def sub_build(px_tag: str, dbv: str = DBV):
+    tr, cl, _ = load_prices(DBV)
+    ct = SB.company_table(tr, cl, load_static(DBV)[0])
     return ct, SB.sub_index(tr), SB.tests(ct)
 
 
-tr, cl, px_source = load_prices()
+tr, cl, px_source = load_prices(DBV)
 last_px = tr.dropna(how="all").index[-1]
 build_log = db.table("build_log")
 built_at = pd.Timestamp(build_log["built_at"].iloc[0]).tz_localize(None)
@@ -137,18 +148,18 @@ with st.sidebar:
     st.caption("Settings recalculate every test, chart, insight and narrative.")
     st.caption(f"Mutuals without listed equity ({', '.join(MUTUALS)}) appear only inside industry aggregates.")
 
-base = compute(tuple(t for t in ALL_TICKERS if SEG[t] in seg_pick) or tuple(ALL_TICKERS), z_cut, px_source)
+base = compute(tuple(t for t in ALL_TICKERS if SEG[t] in seg_pick) or tuple(ALL_TICKERS), z_cut, px_source, DBV)
 y1 = base["y1"]
 outlier_list = A.outliers(base["decomp_all"].set_index("ticker")["tsr_pct"])
 active = tuple(t for t in ALL_TICKERS if SEG[t] in seg_pick and not (excl and t in outlier_list)) or tuple(ALL_TICKERS)
-ctx = compute(active, z_cut, px_source)
+ctx = compute(active, z_cut, px_source, DBV)
 y0, y1 = ctx["y0"], ctx["y1"]
-ind_cards, ind = industry_build()
-sub_ct, sub_idx, sub_t = sub_build(px_source)
+ind_cards, ind = industry_build(DBV)
+sub_ct, sub_idx, sub_t = sub_build(px_source, DBV)
 cyf = CY.facts()
 F = SY.facts(ctx, ind, sub_ct, sub_t, cyf)
 S = SY.build(F)
-fund_full, yt, TY, es, et = cur_build(px_source)
+fund_full, yt, TY, es, et = cur_build(px_source, DBV)
 CUR_YEAR = TY["year"]
 beh_tbl, beh = CU.behaviours(ctx["fund_all"], ctx["decomp_all"], y0, y1)
 RPT = RP.build(F, TY, et, yt, beh_tbl, sub_t, sub_ct)
@@ -997,7 +1008,7 @@ with tabs[8]:
         "Fundamentals by carrier-year (derived)": ctx["fund_all"][["ticker", "name", "segment", "fiscal_year", "premiums_earned",
                                                                   "net_income", "tbv", "tbvps", "p_tbv", "rote_pct", "loss_ratio_pct",
                                                                   "aoci_to_tbv_pct", "tbvps_growth_pct", "premium_growth_pct"]],
-        "SEC XBRL extract (raw, all companies)": load_static()[0],
+        "SEC XBRL extract (raw, all companies)": load_static(DBV)[0],
         f"TSR decomposition {y0}–{y1}": ctx["decomp_all"],
         "Year signals and tests": ctx["years"],
         "Shock days": ctx["shocks"].reset_index().rename(columns={"index": "date", "Date": "date"}),

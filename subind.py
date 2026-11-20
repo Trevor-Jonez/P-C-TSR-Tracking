@@ -15,7 +15,10 @@ def company_table(tr: pd.DataFrame, cl: pd.DataFrame, fund_raw: pd.DataFrame) ->
     u = pd.DataFrame(UNIVERSE).set_index("ticker")
     last = tr.dropna(how="all").index[-1]
     m = tr["^GSPC"].pct_change(fill_method=None)
-    fy_last = int(fund_raw.dropna(subset=["net_income"])["fiscal_year"].value_counts().loc[lambda s: s >= 30].index.max())
+    # latest fiscal year reported by most companies (relative threshold: robust to universe size and partial data)
+    vc = fund_raw.dropna(subset=["net_income"])["fiscal_year"].value_counts()
+    full = vc[vc >= 0.6 * vc.max()] if len(vc) else vc
+    fy_last = int(full.index.max()) if len(full) else int(pd.Timestamp.today().year - 1)
     rows = []
     for t in u.index:
         if t not in tr:
@@ -36,11 +39,11 @@ def company_table(tr: pd.DataFrame, cl: pd.DataFrame, fund_raw: pd.DataFrame) ->
         beta = np.cov(j.iloc[:, 0], j.iloc[:, 1])[0, 1] / j.iloc[:, 1].var() if len(j) > 120 else np.nan
         vol = x.iloc[-252:].std() * np.sqrt(252) * 100
         f = fund_raw[fund_raw["ticker"] == t].set_index("fiscal_year")
-        ni = f["net_income"].get(fy_last, np.nan)
-        sh = f["shares_outstanding"].get(fy_last, np.nan)
+        ni = f["net_income"].get(fy_last, np.nan) if "net_income" in f else np.nan
+        sh = f["shares_outstanding"].get(fy_last, np.nan) if "shares_outstanding" in f else np.nan
         px = cl[t].dropna().iloc[-1] if t in cl else np.nan
         pe = px * sh / ni if pd.notna(ni) and ni > 0 and pd.notna(sh) else np.nan
-        rv = f["revenue"]
+        rv = f["revenue"] if "revenue" in f else pd.Series(dtype=float)
         g = (rv.get(fy_last) / rv.get(fy_last - 1) - 1) * 100 if pd.notna(rv.get(fy_last)) and pd.notna(rv.get(fy_last - 1)) else np.nan
         g3 = ((rv.get(fy_last) / rv.get(fy_last - 3)) ** (1 / 3) - 1) * 100 if pd.notna(rv.get(fy_last)) and pd.notna(rv.get(fy_last - 3)) and rv.get(fy_last - 3) > 0 else np.nan
         rows.append({
