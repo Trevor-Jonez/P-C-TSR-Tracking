@@ -1,0 +1,7 @@
+group,sector_average_pct,top_quartile_pct,bottom_quartile_pct,note
+Insurance globally (all sectors and regions),15,,,98 largest stock exchange-listed insurers globally
+US P&C insurance,18,,,Top 24 US P&C primary insurers in the S&P 1500 (excl. title and multiline)
+Personal lines,17,21,-10,Bottom quartile driven by one outlier
+Personal and commercial lines,17,18,12,Spread based on minimum and maximum (n = 2)
+Mostly specialty (commercial),17,22,8,
+Mostly P&C (commercial),18,26,10,
